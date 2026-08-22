@@ -95,7 +95,7 @@
                         v-for="booking in list"
                         :key="booking.id"
                         class="event-details__bookings_booking"
-                        :href="`https://stats.vatsim.net/stats/${ booking.atc.cid }`"
+                        :href="`https://ivao.aero/Member.aspx?ID=${ booking.atc.cid }`"
                         target="_blank"
                     >
                         <div class="event-details__bookings_booking_callsign">

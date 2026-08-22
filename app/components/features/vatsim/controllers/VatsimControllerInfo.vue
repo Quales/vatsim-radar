@@ -223,7 +223,7 @@ const handleClick = () => {
     if (props.controller?.facility === -2) return;
 
     if (!findAtcByCallsign(callsign)) {
-        window.open(`https://stats.vatsim.net/stats/${ props.controller.cid }`, '_blank');
+        window.open(`https://ivao.aero/Member.aspx?ID=${ props.controller.cid }`, '_blank');
         return;
     }
     mapStore.addAtcOverlay(callsign);

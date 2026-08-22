@@ -211,6 +211,13 @@ export default defineNuxtConfig({
             '/layers/esri/**': {
                 proxy: 'https://ibasemaps-api.arcgis.com/**',
             },
+            ...(process.env.TILES_PROXY_URL
+                ? {
+                    '/tiles/**': {
+                        proxy: `${ process.env.TILES_PROXY_URL.replace(/\/+$/, '') }/**`,
+                    },
+                }
+                : {}),
         },
     },
 

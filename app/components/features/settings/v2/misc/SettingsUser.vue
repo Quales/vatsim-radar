@@ -11,7 +11,7 @@
         <ui-button-group v-if="store.user">
             <ui-button
                 :disabled="!store.user?.cid"
-                :href="`https://stats.vatsim.net/stats/${ store.user?.cid }`"
+                :href="`https://ivao.aero/Member.aspx?ID=${ store.user?.cid }`"
                 target="_blank"
             >
                 My stats

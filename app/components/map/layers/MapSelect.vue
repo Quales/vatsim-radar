@@ -35,7 +35,7 @@
                             >
                                 <template v-if="item.key === 'pilot-details'">
                                     <ui-button
-                                        :href="`https://stats.vatsim.net/stats/${ item.cid }`"
+                                        :href="`https://ivao.aero/Member.aspx?ID=${ item.cid }`"
                                         target="_blank"
                                         type="link"
                                         @click="contextMenu = null"

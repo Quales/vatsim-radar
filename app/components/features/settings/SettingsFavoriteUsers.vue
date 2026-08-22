@@ -50,7 +50,7 @@
                         «{{ user.listName }}»
                     </span>
                     <ui-button
-                        :href="`https://stats.vatsim.net/stats/${ user.cid }`"
+                        :href="`https://ivao.aero/Member.aspx?ID=${ user.cid }`"
                         icon-width="18px"
                         link-color="blue500"
                         target="_blank"

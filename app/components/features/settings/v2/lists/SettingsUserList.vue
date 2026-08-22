@@ -83,7 +83,7 @@
                     <span>{{item.name}}</span>
                     <ui-text
                         class="__horizontal-group-4"
-                        :href="`https://stats.vatsim.net/stats/${ item.cid }`"
+                        :href="`https://ivao.aero/Member.aspx?ID=${ item.cid }`"
                         target="_blank"
                         type="3b"
                     >

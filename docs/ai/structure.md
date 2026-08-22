@@ -63,6 +63,7 @@ The app has three main runtime layers:
    - In-memory `radarStorage` in `app/utils/server/storage.ts`.
    - Redis synchronization in `app/utils/server/redis.ts` and `server/plugins/vatsim.ts`.
    - Cron/data jobs in `app/utils/server/tasks.ts` and `server/plugins/cron.ts`.
+   - Network-data normalization in `app/utils/server/worker/ivao-bridge.ts` (IVAO -> internal VATSIM-shaped payload), with worker fetches combining whazzup + `/v2/tracker/now/pilots/summary` + `/v2/tracker/now/atc/summary`.
    - VATSIM-specific data enrichment in `app/utils/server/vatsim/*`.
 
 PWA and browser-cache behavior:
@@ -77,7 +78,7 @@ PWA and browser-cache behavior:
 
 High-level data path:
 
-1. Background jobs fetch external data from VATSIM, VATSpy, SimAware, VATGlasses, Navigraph, Patreon, FAA/AeroNav, etc.
+1. Background jobs fetch external data from IVAO/VATSIM, VATSpy, SimAware, VATGlasses, Navigraph, Patreon, FAA/AeroNav, etc.
 2. Server jobs normalize data into `radarStorage` and/or Redis.
 3. Nitro API routes expose compact or detailed datasets under `/api/data/**`.
 4. Client initialization in `app/composables/init.ts` checks versions, downloads changed datasets, and caches large static datasets in IndexedDB via `app/composables/render/idb.ts`.
@@ -151,6 +152,7 @@ Map component groups:
 
 - `app/components/map/layers/*`: layer-level map UI and rendered layer components.
   - `app/components/map/layers/MapLayer.vue`: base raster/vector tile layer selection, Protomaps styling, attribution layer setup, and tile source cleanup.
+  - Protomaps vector basemap metadata is read from `public/tiles.json` (`/tiles.json` at runtime). Tile URL templates inside that file should point to `/tiles/{z}/{x}/{y}.mvt` for self-hosted deployments, with optional upstream proxying configured in `nuxt.config.ts` route rules.
 - `app/components/map/overlays/*`: draggable/minified overlays for pilots, airports, ATC, etc.
 - `app/components/map/MapHtmlOverlay.vue`: shared OpenLayers HTML overlay wrapper. On mobile, non-persistent interactive popups render as bottom sheets; persistent coordinate overlays still use OpenLayers positioning.
 - `app/components/map/MapMobileWindow.vue`: mobile overlay window/sheet host. Featured Airports/Favorite mobile menus take priority over the active overlay bottom sheet.

@@ -180,7 +180,7 @@
                     Focus On Map
                 </ui-button>
                 <ui-button
-                    :href="`https://stats.vatsim.net/stats/${ atc.cid }`"
+                    :href="`https://ivao.aero/Member.aspx?ID=${ atc.cid }`"
                     target="_blank"
                 >
                     <template #icon>

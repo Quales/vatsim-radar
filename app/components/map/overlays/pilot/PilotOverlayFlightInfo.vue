@@ -47,7 +47,7 @@
                 </template>
                 <template #item-stats>
                     <ui-button
-                        :href="`https://stats.vatsim.net/stats/${ pilot.cid }`"
+                        :href="`https://ivao.aero/Member.aspx?ID=${ pilot.cid }`"
                         icon-width="14"
                         target="_blank"
                         type="link"

@@ -1,22 +1,30 @@
-import { ofetch } from 'ofetch';
 import { radarStorage } from '~/utils/server/storage';
-import { validateDataReady } from '~/utils/server/h3';
 import type { VatsimMandatoryData } from '~/types/data/vatsim';
+import { updateVatsimMandatoryDataStorage } from '~/utils/server/vatsim/update';
 
-export default defineEventHandler(async event => {
-    const remoteBase = process.env.REMOTE_DATA_URL?.replace(/\/+$/, '');
-    if (remoteBase) {
-        try {
-            return await ofetch<VatsimMandatoryData>(`${ remoteBase }/api/data/vatsim/data/mandatory`, {
-                timeout: 1000 * 10,
-            });
-        }
-        catch (e) {
-            console.error('[mandatory] REMOTE_DATA_URL proxy failed, serving local data:', e);
-        }
+function createEmptyMandatoryData(): VatsimMandatoryData {
+    const now = Date.now();
+
+    return {
+        timestamp: new Date(now).toISOString(),
+        timestampNum: now,
+        serverTime: now,
+        pilots: [],
+    };
+}
+
+export default defineEventHandler(async () => {
+    const localMandatoryData = radarStorage.vatsim.mandatoryData;
+    const livePilots = radarStorage.vatsim.data?.pilots ?? [];
+
+    if (localMandatoryData && (localMandatoryData.pilots.length > 0 || livePilots.length === 0)) {
+        return localMandatoryData;
     }
 
-    if (!(await validateDataReady(event))) return;
+    if (livePilots.length > 0) {
+        updateVatsimMandatoryDataStorage();
+        return radarStorage.vatsim.mandatoryData ?? createEmptyMandatoryData();
+    }
 
-    return radarStorage.vatsim.mandatoryData;
+    return localMandatoryData ?? createEmptyMandatoryData();
 });

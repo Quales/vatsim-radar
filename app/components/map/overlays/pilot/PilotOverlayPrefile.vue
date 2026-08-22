@@ -35,7 +35,7 @@
         <template #actions>
             <ui-button-group>
                 <ui-button
-                    :href="`https://stats.vatsim.net/stats/${ props.overlay?.data.prefile.cid }`"
+                    :href="`https://ivao.aero/Member.aspx?ID=${ props.overlay?.data.prefile.cid }`"
                     target="_blank"
                 >
                     <template #icon>

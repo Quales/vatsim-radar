@@ -14,13 +14,14 @@ import { initKafka } from '~/utils/server/worker/kafka';
 import { initWebsocket, wss } from '~/utils/server/vatsim/ws';
 import { getPlanQuestDBDataForPilots, getShortQuestDBDataForPilots } from '~/utils/server/questdb/converters';
 import { getRedis } from '~/utils/server/redis';
-import { defineCronJob, getVATSIMIdentHeaders } from '~/utils/server';
+import { defineCronJob } from '~/utils/server';
 import { initWholeBunchOfBackendTasks, navigraphUpdating } from '~/utils/server/tasks';
 import { prisma } from '~/utils/server/prisma';
 
 import { getFacilityByCallsign } from '~/utils/shared/vatsim';
 import type { RadarNotam } from '~/utils/shared/vatsim';
 import { getTransceiverData } from '~/utils/server/vatsim';
+import { convertIvaoDataToVatsimData } from './ivao-bridge';
 
 initWebsocket();
 initQuestDB();
@@ -102,6 +103,9 @@ let lastCheck = 0;
 let data: VatsimData | null = null;
 
 let shortBars: BARSShort = {};
+const ivaoWhazzupEndpoint = process.env.IVAO_DATA_URL ?? 'https://api.ivao.aero/v2/tracker/whazzup';
+const ivaoPilotsSummaryEndpoint = process.env.IVAO_PILOTS_SUMMARY_URL ?? 'https://api.ivao.aero/v2/tracker/now/pilots/summary';
+const ivaoAtcSummaryEndpoint = process.env.IVAO_ATC_SUMMARY_URL ?? 'https://api.ivao.aero/v2/tracker/now/atc/summary';
 
 await defineCronJob('*/10 * * * * *', async () => {
     const data = await $fetch<BARS>('https://api.stopbars.com/all').catch(() => {});
@@ -123,21 +127,60 @@ await defineCronJob('*/10 * * * * *', async () => {
 defineCronJob('* * * * * *', async () => {
     const vatspy = radarStorage.vatspy;
 
-    if (!vatspy?.data || dataInProgress || Date.now() - dataLatestFinished < 1000 || navigraphUpdating) return;
+    if (!vatspy?.data) {
+        console.debug('[ivao-fetch] skip: vatspy not loaded'); return;
+    }
+    if (dataInProgress) {
+        return;
+    }
+    if (Date.now() - dataLatestFinished < 1000) {
+        return;
+    }
+    if (navigraphUpdating) {
+        console.debug('[ivao-fetch] skip: navigraph updating'); return;
+    }
 
     try {
         dataInProgress = true;
+        console.debug(`[ivao-fetch] fetching whazzup=${ ivaoWhazzupEndpoint } pilots=${ ivaoPilotsSummaryEndpoint } atc=${ ivaoAtcSummaryEndpoint }`);
 
-        data = await $fetch<VatsimData>('https://data.vatsim.net/v3/vatsim-data.json', {
-            parseResponse(responseText) {
-                return JSON.parse(responseText);
-            },
-            headers: getVATSIMIdentHeaders(),
-            timeout: 1000 * 30,
+        const [ivaoDataRaw, pilotsSummaryRaw, atcSummaryRaw] = await Promise.all([
+            $fetch<unknown>(ivaoWhazzupEndpoint, {
+                parseResponse(responseText) {
+                    return JSON.parse(responseText);
+                },
+                timeout: 1000 * 30,
+            }),
+            $fetch<unknown>(ivaoPilotsSummaryEndpoint, {
+                parseResponse(responseText) {
+                    return JSON.parse(responseText);
+                },
+                timeout: 1000 * 30,
+            }).catch(error => {
+                console.error('[ivao-fetch] pilots summary failed, fallback to whazzup clients.pilots', error);
+                return null;
+            }),
+            $fetch<unknown>(ivaoAtcSummaryEndpoint, {
+                parseResponse(responseText) {
+                    return JSON.parse(responseText);
+                },
+                timeout: 1000 * 30,
+            }).catch(error => {
+                console.error('[ivao-fetch] atc summary failed, fallback to whazzup clients.atcs', error);
+                return null;
+            }),
+        ]);
+
+        console.debug(`[ivao-fetch] whazzup type=${ Array.isArray(ivaoDataRaw) ? 'array' : typeof ivaoDataRaw } pilotsSummary=${ Array.isArray(pilotsSummaryRaw) ? pilotsSummaryRaw.length : 'fallback' } atcSummary=${ Array.isArray(atcSummaryRaw) ? atcSummaryRaw.length : 'fallback' }`);
+
+        data = convertIvaoDataToVatsimData(ivaoDataRaw, {
+            pilotsSummary: pilotsSummaryRaw ?? undefined,
+            atcSummary: atcSummaryRaw ?? undefined,
         });
+        console.info(`[ivao-fetch] converted: pilots=${ data.pilots.length } controllers=${ data.controllers.length } atis=${ data.atis.length } observers=${ data.observers.length }`);
     }
     catch (e) {
-        console.error(e);
+        console.error('[ivao-fetch] FETCH ERROR:', e);
     }
 
     /* data?.pilots.push({
@@ -191,7 +234,18 @@ defineCronJob('* * * * * *', async () => {
 defineCronJob('* * * * * *', async () => {
     const vatspy = radarStorage.vatspy;
 
-    if (!vatspy?.data || dataProcessInProgress || !data || navigraphUpdating) return;
+    if (!vatspy?.data) {
+        console.debug('[ivao-process] skip: vatspy not loaded'); return;
+    }
+    if (dataProcessInProgress) {
+        return;
+    }
+    if (!data) {
+        return;
+    }
+    if (navigraphUpdating) {
+        console.debug('[ivao-process] skip: navigraph updating'); return;
+    }
 
     try {
         dataProcessInProgress = true;
@@ -199,6 +253,7 @@ defineCronJob('* * * * * *', async () => {
         const dataSnapshot = data;
         data = null;
         radarStorage.vatsim.data = dataSnapshot;
+        console.debug(`[ivao-process] snapshot stored: pilots=${ dataSnapshot.pilots.length } controllers=${ dataSnapshot.controllers.length }`);
 
         const updateTimestamp = new Date(radarStorage.vatsim.data.general.update_timestamp!).getTime();
         radarStorage.vatsim.data.general.update_timestamp = new Date().toISOString();
@@ -473,7 +528,9 @@ defineCronJob('* * * * * *', async () => {
         toDelete.prefiles.clear();
 
         updateVatsimDataStorage();
+        console.debug(`[ivao-process] after updateVatsimDataStorage: pilots=${ radarStorage.vatsim.data!.pilots.length } controllers=${ radarStorage.vatsim.data!.controllers.length } observers=${ radarStorage.vatsim.data!.observers.length }`);
         updateVatsimMandatoryDataStorage();
+        console.debug(`[ivao-process] after updateVatsimMandatoryDataStorage: mandatory pilots=${ radarStorage.vatsim.mandatoryData?.pilots.length ?? 'null' }`);
 
         await updateVatsimExtendedPilots();
 
@@ -741,6 +798,7 @@ defineCronJob('* * * * * *', async () => {
                 resolve();
             });
         });
+        console.info(`[ivao-process] redis publish OK: pilots=${ radarStorage.vatsim.mandatoryData?.pilots.length ?? 0 } compactPilots=${ radarStorage.vatsim.compactDatafeed?.pilots.length ?? 0 }`);
     }
     catch (e) {
         console.error(e);
