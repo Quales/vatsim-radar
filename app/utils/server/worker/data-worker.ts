@@ -124,7 +124,7 @@ await defineCronJob('*/10 * * * * *', async () => {
     }
 });
 
-defineCronJob('* * * * * *', async () => {
+defineCronJob('*/15 * * * * *', async () => {
     const vatspy = radarStorage.vatspy;
 
     if (!vatspy?.data) {

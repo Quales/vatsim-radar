@@ -13,7 +13,7 @@ export default defineEventHandler(async (event): Promise<VatsimMemberStats | und
         return;
     }
 
-    return await $fetch<VatsimMemberStats>(`https://api.vatsim.net/v2/members/${ cid }/stats`, {
+    return await $fetch<VatsimMemberStats>(`https://api.ivao.aero/v2/users/${ cid }?apiKey=${ process.env.IVAO_API_KEY }`, {
         headers: getVATSIMIdentHeaders(),
     }).catch(() => {
         handleH3Error({

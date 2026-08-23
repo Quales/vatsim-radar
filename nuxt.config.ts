@@ -16,10 +16,10 @@ function isDebug() {
     return process.env.VR_DEBUG === '1' || import.meta.dev || process.env.NODE_ENV === 'development';
 }
 
-let appName = 'VATSIM Radar';
+let appName = 'IVAO Radar';
 
-if (process.env.NODE_ENV === 'development') appName = 'VATSIM Radar Dev';
-if (process.env.DOMAIN?.includes('next')) appName = 'VATSIM Radar Next';
+if (process.env.NODE_ENV === 'development') appName = 'IVAO Radar Dev';
+if (process.env.DOMAIN?.includes('next')) appName = 'IVAO Radar Next';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
                 },
                 {
                     name: 'apple-mobile-web-app-title',
-                    content: 'VATSIM Radar',
+                    content: 'IVAO Radar',
                 },
             ],
         },
@@ -280,7 +280,7 @@ export default defineNuxtConfig({
         manifest: {
             name: appName,
             short_name: appName,
-            description: 'VATSIM Traffic Monitoring Service',
+            description: 'IVAO Traffic Monitoring Service',
             theme_color: '???',
             display: 'standalone',
             display_override: ['standalone'],
