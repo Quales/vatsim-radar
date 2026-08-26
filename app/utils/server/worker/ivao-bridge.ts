@@ -50,10 +50,16 @@ const DEFAULT_RATINGS: VatsimData['ratings'] = [
 
 const DEFAULT_PILOT_RATINGS: VatsimData['pilot_ratings'] = [
     { id: 0, short_name: 'P0', long_name: 'No Pilot Rating' },
-    { id: 1, short_name: 'P1', long_name: 'Pilot 1' },
-    { id: 2, short_name: 'P2', long_name: 'Pilot 2' },
-    { id: 3, short_name: 'P3', long_name: 'Pilot 3' },
-    { id: 4, short_name: 'P4', long_name: 'Pilot 4' },
+    { id: 1, short_name: 'FS', long_name: 'No Pilot Rating' },
+    { id: 2, short_name: 'FS1', long_name: 'Basic Flight Student' },
+    { id: 3, short_name: 'FS2', long_name: 'Flight Student' },
+    { id: 4, short_name: 'FS3', long_name: 'Advanced Flight Student' },
+    { id: 5, short_name: 'PP', long_name: 'Private Pilot' },
+    { id: 6, short_name: 'SPP', long_name: 'Senior Private Pilot' },
+    { id: 7, short_name: 'CP', long_name: 'Commercial Private Pilot' },
+    { id: 8, short_name: 'ATP', long_name: 'Airline Transport Pilot' },
+    { id: 9, short_name: 'SFI', long_name: 'Senior Flight Instructor' },
+    { id: 10, short_name: 'CFI', long_name: 'Chief Flight Instructor' },
 ];
 
 const DEFAULT_MILITARY_RATINGS: VatsimData['military_ratings'] = [

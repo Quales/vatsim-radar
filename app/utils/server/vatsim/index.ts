@@ -19,7 +19,7 @@ export function vatsimAuthOrRefresh(code: string, type: 'auth' | 'refresh') {
         client_id: config.VATSIM_CLIENT_ID,
         client_secret: config.VATSIM_CLIENT_SECRET,
         redirect_uri: getVatsimRedirectUri(),
-        scope: ['full_name'],
+        scope: ['profile', 'discord'],
     };
 
     if (type === 'refresh') {
@@ -35,14 +35,19 @@ export function vatsimAuthOrRefresh(code: string, type: 'auth' | 'refresh') {
         token_type: 'Bearer';
         refresh_token: string;
         scopes: string[];
-    }>(`${ config.VATSIM_ENDPOINT }/oauth/token`, {
+    }>(`https://api.ivao.aero/v2/oauth/token`, {
         method: 'POST',
         body: settings,
     });
 }
 
 export interface VatsimUser {
-    cid: string;
+    cid: string
+    id: string
+    firstName: string
+    lastName: string
+    fullName: string
+    publicNickname: string
     personal: {
         name_first: string;
         name_last: string;
@@ -54,18 +59,27 @@ export interface VatsimUser {
 }
 
 export async function vatsimGetUser(token: string) {
-    const result = (await ofetch<{ data: VatsimUser }>(`${ useRuntimeConfig().VATSIM_ENDPOINT }/api/user`, {
+    const result = (await ofetch<VatsimUser>(`https://api.ivao.aero/v2/users/me`, {
         headers: {
             Authorization: `Bearer ${ token }`,
         },
-    })).data;
+    }));
 
-    if (result?.oauth?.token_valid !== 'true') {
+    if (!result.publicNickname) {
         throw createError({
             statusCode: 401,
             data: 'Token is not valid',
         });
     }
+
+    result.fullName = result.firstName + ' ' + result.lastName;
+    result.id = String(result.id);
+    result.cid = result.id;
+    result.personal = {
+        name_first: result.firstName,
+        name_last: result.lastName,
+        name_full: result.fullName,
+    };
 
     return result;
 }

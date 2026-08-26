@@ -40,16 +40,6 @@
                         {{controller.frequency}}
                     </template>
                 </ui-text>
-                <a
-                    v-if="showSpeaker"
-                    class="atc_speaker"
-                    :href="`https://listen.vatsim.net/live/${ controller.duplicatedBy ?? controller.callsign }`"
-                    target="_blank"
-                    :title="`Listen as ${ controller.duplicatedBy ?? controller.callsign }`"
-                    @click.stop
-                >
-                    <speaker-icon/>
-                </a>
                 <div class="__spacer"/>
                 <div
                     v-if="controller.name"

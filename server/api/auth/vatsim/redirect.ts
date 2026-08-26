@@ -32,10 +32,10 @@ export default defineEventHandler(async event => {
         });
     }
 
-    const url = new URL(`${ config.VATSIM_ENDPOINT }/oauth/authorize`);
+    const url = new URL(`${ config.VATSIM_ENDPOINT }/authorize`);
     url.searchParams.set('client_id', config.VATSIM_CLIENT_ID);
     url.searchParams.set('redirect_uri', getVatsimRedirectUri());
-    url.searchParams.set('scope', 'full_name');
+    url.searchParams.set('scope', 'profile discord');
     url.searchParams.set('state', state);
     url.searchParams.set('response_type', 'code');
 

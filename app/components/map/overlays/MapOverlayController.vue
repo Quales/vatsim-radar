@@ -66,7 +66,6 @@
                             :items="[
                                 { key: 'rating', title: 'Rating', text: shortRating },
                                 { key: 'total', title: 'Total Hours', text: stats?.total, hide: !stats },
-                                { key: 'on-rating', title: `Hours on ${ shortRating }`, text: stats?.rating, hide: !stats },
                                 { key: 'time-online', title: 'Time Online', text: getATCTime(atc) },
                             ]"
                         >
@@ -76,11 +75,6 @@
                                 </ui-bubble>
                             </template>
                             <template #item-total="{ item }">
-                                <span class="atc__chip">
-                                    <ui-chip text-type="caption">{{numberFormatter.format(+item.text!)}}</ui-chip>
-                                </span>
-                            </template>
-                            <template #item-on-rating="{ item }">
                                 <span class="atc__chip">
                                     <ui-chip text-type="caption">{{numberFormatter.format(+item.text!)}}</ui-chip>
                                 </span>
@@ -97,18 +91,6 @@
         </template>
         <template #frequencies>
             <div class="__vertical-group-16">
-                <ui-button
-                    class="atc_speaker"
-                    :href="`https://listen.vatsim.net/live/${ atc.duplicatedBy ?? atc.callsign }`"
-                    size="S"
-                    target="_blank"
-                    type="link"
-                >
-                    <template #icon>
-                        <speaker-icon/>
-                    </template>
-                    Listen as {{atc.duplicatedBy ?? atc.callsign}}
-                </ui-button>
                 <ui-notification
                     remember-message="ATC_FREQUENCIES"
                     type="info"

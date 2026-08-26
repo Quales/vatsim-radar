@@ -319,14 +319,6 @@
                 <template v-if="!isOffline" #item-com1>
                     <div class="flight-info__speaker-wrapper">
                         {{pilot.frequencies[0]}}
-                        <a
-                            class="flight-info__speaker"
-                            :href="`https://listen.vatsim.net/live/${ pilot.callsign }`"
-                            target="_blank"
-                            :title="`Listen as ${ pilot.callsign }`"
-                        >
-                            <speaker-icon/>
-                        </a>
                     </div>
                 </template>
                 <template #item-ctaf>
