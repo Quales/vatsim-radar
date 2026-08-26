@@ -423,7 +423,7 @@ export const getSettingsSections = () => {
                         {
                             key: 'performance',
                             title: 'Performance Settings',
-                            description: 'Here, you can manage performance-related settings, and learn how they affect VATSIM Radar performance',
+                            description: 'Here, you can manage performance-related settings, and learn how they affect IVAO Radar performance',
                             items: [
                                 {
                                     type: 'inline-component',

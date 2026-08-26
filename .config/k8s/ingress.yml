@@ -87,7 +87,7 @@ data:
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <title>Error 503 | VATSIM Radar</title>
+        <title>Error 503 | IVAO Radar</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta content="width=device-width, initial-scale=1" name="viewport">
     </head>
@@ -173,7 +173,7 @@ data:
             GOING AROUND
         </div>
         <div class="error_text">
-            VATSIM Radar is most likely updating. This may take a few minutes.<br>
+            IVAO Radar is most likely updating. This may take a few minutes.<br>
             If this issue persists for more than 5-10 minutes, please visit our <a
             href="https://discord.com/invite/MtFKhMPePe" target="_blank">Discord</a> to get status update.
         </div>

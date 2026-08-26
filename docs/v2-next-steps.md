@@ -1,6 +1,6 @@
 # V2 Preview Next Steps
 
-VATSIM Radar v2 Public Preview has come to an end. 
+IVAO Radar v2 Public Preview has come to an end. 
 
 That means a few things.
 

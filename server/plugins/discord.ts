@@ -50,7 +50,7 @@ export default defineNitroPlugin(async app => {
     const commands = [
         {
             name: 'verify',
-            description: 'Verify yourself to access VATSIM Radar',
+            description: 'Verify yourself to access IVAO Radar',
         },
         {
             name: 'qa-verify',
@@ -78,7 +78,7 @@ export default defineNitroPlugin(async app => {
         },
         {
             name: 'dev-release',
-            description: 'Release dev changelog of VATSIM Radar',
+            description: 'Release dev changelog of IVAO Radar',
             default_member_permissions: PermissionFlagsBits.ManageMessages.toString(),
         },
     ];
@@ -204,7 +204,7 @@ export default defineNitroPlugin(async app => {
         const otherListsText = (lists.length && listsFriends) ? `\n- Other lists created: ${ lists.length } with ${ listsFriends } folks inside of them` : '';
 
         await interaction.reply({
-            content: `### <@${ interaction.user.id }> VATSIM Radar${ isNext ? ' Next' : '' } stats
+            content: `### <@${ interaction.user.id }> IVAO Radar${ isNext ? ' Next' : '' } stats
                         
 - ID: ${ existingUser.id }
 - Map settings saved: ${ mapSettingsText }${ filtersText }${ bookmarksText }

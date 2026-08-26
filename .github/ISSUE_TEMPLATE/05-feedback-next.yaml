@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Hello! Thank you for suggesting an improvement for VATSIM Radar Next.
+        Hello! Thank you for suggesting an improvement for IVAO Radar Next.
         
         Before reporting, please also check existing feature requests and enhancements in this repository - you can filter them by "feature request" and "pending triage" labels (also check closed ones).
   - type: input

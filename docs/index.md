@@ -3,7 +3,7 @@ layout: home
 editLink: false
 
 hero:
-  name: VATSIM Radar
+  name: IVAO Radar
   tagline: The Premiere Flight Tracker for the VATSIM Network
   actions:
     - theme: brand
@@ -31,6 +31,6 @@ features:
   
 - icon: 🛠️
   title: Contributing and Debugging
-  details: Discover how to set up VATSIM Radar locally, how to debug data - and more
+  details: Discover how to set up IVAO Radar locally, how to debug data - and more
   link: /contributing/
 ---

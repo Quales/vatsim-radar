@@ -9,7 +9,7 @@ if ! [ -d "/radar/.config/certs" ]; then
     C = EN\n\
     ST = City\n\
     L = City\n\
-    O = VATSIM Radar\n\
+    O = IVAO Radar\n\
     OU = Radar\n\
     CN = radar\n\
     emailAddress = radar@foo.bar" > /radar/.config/certs/openssl.cnf

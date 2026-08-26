@@ -117,7 +117,7 @@
                         <template #icon>
                             <discord-icon/>
                         </template>
-                        VATSIM Radar Development
+                        IVAO Radar Development
                     </ui-button>
                 </ui-button-group>
                 <navigation-airac/>
@@ -174,7 +174,7 @@ const closeSettings = () => {
 
 const counters = computed(() => ([
     ['Connections', onlineCounters.value.total],
-    ['In VATSIM Radar', onlineCounters.value.inRadar],
+    ['In IVAO Radar', onlineCounters.value.inRadar],
     ['Pilots', onlineCounters.value.pilots],
     ['ATC', onlineCounters.value.controllers],
     ['Supervisors', onlineCounters.value.sups],

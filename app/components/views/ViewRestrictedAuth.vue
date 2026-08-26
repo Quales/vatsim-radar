@@ -9,7 +9,7 @@
             </template>
         </template>
         <template v-if="!store.user">
-            You have to authorize and be allowed to use this version of VATSIM Radar. Please <code>/qa-verify</code> in Discord if you have access and authorize:<br><br>
+            You have to authorize and be allowed to use this version of IVAO Radar. Please <code>/qa-verify</code> in Discord if you have access and authorize:<br><br>
             <ui-button
                 width="200px"
                 @click="vatsimAuth"
@@ -19,7 +19,7 @@
         </template>
         <template v-else>
             <div class="__info-sections">
-                Oops! You don't have Discord role to access this version of VATSIM Radar.<br><br>
+                Oops! You don't have Discord role to access this version of IVAO Radar.<br><br>
 
                 <ui-button
                     width="300px"

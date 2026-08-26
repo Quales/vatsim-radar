@@ -8,12 +8,12 @@
             :class="{ 'support_hero--light': store.getCurrentTheme === 'light' }"
         >
             <div class="support_hero_title">
-                Support <span>VATSIM Radar</span><br>
+                Support <span>IVAO Radar</span><br>
                 on <span>Patreon</span> or <span>Boosty</span>
             </div>
             <div class="support_hero_text">
-                Our financial goals are to keep <span>VATSIM Radar</span> stable, no matter how it grows. Currently, we need money for <span>DigitalOcean</span> servers, as well as <span>CloudFlare</span> services.<br><br>
-                In future, we may buy some existing features and pay for more services that we may need to improve <span>VATSIM Radar</span>.
+                Our financial goals are to keep <span>IVAO Radar</span> stable, no matter how it grows. Currently, we need money for <span>DigitalOcean</span> servers, as well as <span>CloudFlare</span> services.<br><br>
+                In future, we may buy some existing features and pay for more services that we may need to improve <span>IVAO Radar</span>.
             </div>
             <div class="support_hero_stats">
                 <div class="support_hero_stats_item">
@@ -137,7 +137,7 @@ import type { PatreonInfo } from '~/types/data/patreon';
 import { useRadarError } from '~/composables/errors';
 
 useHead({
-    title: 'Support VATSIM Radar',
+    title: 'Support IVAO Radar',
 });
 
 const store = useStore();

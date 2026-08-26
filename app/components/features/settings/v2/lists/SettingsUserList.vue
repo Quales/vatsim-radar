@@ -211,7 +211,7 @@
                     </details>
                 </ui-notification>
                 <ui-button size="S" @click="fileInput?.click()">
-                    Import VATSpy XML or VATSIM Radar JSON
+                    Import VATSpy XML or IVAO Radar JSON
                 </ui-button>
                 <input
                     v-show="false"

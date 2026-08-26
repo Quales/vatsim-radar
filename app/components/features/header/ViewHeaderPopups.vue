@@ -21,7 +21,7 @@
             Account Deletion
         </template>
         Are you completely sure you want to delete your account?<br><br>
-        <strong>You will not be able to cancel this action</strong>. All your VATSIM Radar information and
+        <strong>You will not be able to cancel this action</strong>. All your IVAO Radar information and
         preferences will be permanently lost.
         <template #actions>
             <ui-button

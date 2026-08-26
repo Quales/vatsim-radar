@@ -8,7 +8,7 @@
                 Data Policy
             </div>
             <div class="consent_description">
-                Uh oh! VATSIM Radar wants to share some little data with 3rd party. What do we do?
+                Uh oh! IVAO Radar wants to share some little data with 3rd party. What do we do?
             </div>
         </div>
         <div class="consent_actions">

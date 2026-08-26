@@ -1,21 +1,21 @@
 # About Us
 
-## What is VATSIM Radar?
+## What is IVAO Radar?
 
-VATSIM Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
+IVAO Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
 
 ## When was it created?
 
-VATSIM Radar Beta was opened to the public on `17 April 2024`. That is the same day that Sean Bean turned 66. Coincidence? We think not.
+IVAO Radar Beta was opened to the public on `17 April 2024`. That is the same day that Sean Bean turned 66. Coincidence? We think not.
 
-## How is VATSIM Radar powered?
+## How is IVAO Radar powered?
 
-VATSIM Radar is built using Vue and Nuxt.
+IVAO Radar is built using Vue and Nuxt.
 Our map is powered by OpenLayers, while our backend is Nitro, Prisma and MySQL. 
 
-## How to support VATSIM Radar?
-VATSIM Radar is funded by generous members of the community!
-In order to keep VATSIM Radar running and support future development, we have set up a Patreon page. 
+## How to support IVAO Radar?
+IVAO Radar is funded by generous members of the community!
+In order to keep IVAO Radar running and support future development, we have set up a Patreon page. 
 
 Funds will be used to pay for map layers, Cloudflare and Server traffic.
 
@@ -27,11 +27,11 @@ Donators get access to Early-Access branches, dedicated Discord channels to disc
 
 Don't be a stranger; [Email us!](mailto:dan@vatsim-radar.com)
 
-## How to contribute to VATSIM Radar?
+## How to contribute to IVAO Radar?
 
 Visit [Contributing](/contributing/) to learn more.
 
-## How to change VATSIM Radar displayed ATC data?
+## How to change IVAO Radar displayed ATC data?
 
 Visit [Data](/contributing/data) to learn more.
 

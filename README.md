@@ -1,4 +1,4 @@
-# VATSIM Radar
+# IVAO Radar
 
 Main website: https://vatsim-radar.com
 

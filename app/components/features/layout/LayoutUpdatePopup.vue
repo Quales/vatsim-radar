@@ -6,7 +6,7 @@
     >
         <template #title>Page Reload Needed</template>
 
-        A new VATSIM Radar update is available! Please reload the page to apply the update.
+        A new IVAO Radar update is available! Please reload the page to apply the update.
 
         <template #actions>
             <ui-button @click="reload">

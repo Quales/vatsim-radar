@@ -1,6 +1,6 @@
 # Features
 
-Explore the VATSIM Radar Features!
+Explore the IVAO Radar Features!
 
 [[toc]]
 

@@ -1,4 +1,4 @@
-# VATSIM Radar Architecture Map
+# IVAO Radar Architecture Map
 
 This is a routing map for agents, optimized for answering **"where should I look next?"**. It describes ownership and data flow, not implementation invariants. Before changing a subsystem, open the matching section here and then check [`decisions.md`](./decisions.md) for constraints.
 

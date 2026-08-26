@@ -106,7 +106,7 @@
                     Authorization confirmation
                 </template>
 
-                You have successfully verified in VATSIM Radar Discord.
+                You have successfully verified in IVAO Radar Discord.
             </popup-fullscreen>
             <popup-fullscreen
                 v-if="observerFlight && canShowObserver"

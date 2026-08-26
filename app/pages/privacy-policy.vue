@@ -8,7 +8,7 @@
                 Privacy <span>Policy</span>
             </div>
             <div class="privacy-policy_hero_text">
-                Your privacy matters to us. Learn how <span>VATSIM Radar</span> handles your data with transparency and respect.
+                Your privacy matters to us. Learn how <span>IVAO Radar</span> handles your data with transparency and respect.
             </div>
             <div class="privacy-policy_hero_contact">
                 <div class="privacy-policy_hero_contact_label">
@@ -34,13 +34,13 @@
                                 All described below belongs to service located on <span>vatsim-radar.com</span> and it's subdomains
                             </li>
                             <li>
-                                Services on this domain and subdomains would be described from later on as <span>VATSIM Radar</span>
+                                Services on this domain and subdomains would be described from later on as <span>IVAO Radar</span>
                             </li>
                             <li>
                                 This Privacy Policy was last updated on <span>29 March 2025</span> (revision 4)
                             </li>
                             <li>
-                                User agrees to Privacy Policy by using <span>VATSIM Radar</span>
+                                User agrees to Privacy Policy by using <span>IVAO Radar</span>
                             </li>
                             <li>
                                 Privacy Policy updates will be listed on this section with updated date and revision number
@@ -53,10 +53,10 @@
                         <div class="privacy-policy_section_title">Persistent stored data</div>
                         <ol>
                             <li>
-                                <span>VATSIM Radar</span> may store your data in persistent DataBase after linking of VATSIM, Navigraph, and other accounts, listed below in clause 2.2.
+                                <span>IVAO Radar</span> may store your data in persistent DataBase after linking of VATSIM, Navigraph, and other accounts, listed below in clause 2.2.
                             </li>
                             <li>
-                                Personal data, stored by <span>VATSIM Radar</span>, includes:
+                                Personal data, stored by <span>IVAO Radar</span>, includes:
 
                                 <ol>
                                     <li>
@@ -95,7 +95,7 @@
                         <div class="privacy-policy_section_title">Browser stored data</div>
                         <ol>
                             <li>
-                                <span>VATSIM Radar</span> may use Cookie, Local Storage or other browser storing features
+                                <span>IVAO Radar</span> may use Cookie, Local Storage or other browser storing features
                             </li>
                             <li>
                                 Data, stored in browser, includes, but not limited to, authorization token, preferences
@@ -109,10 +109,10 @@
                         <div class="privacy-policy_section_title">3-rd party data sharing</div>
                         <ol>
                             <li>
-                                <span>VATSIM Radar</span> does not share any data, described in 2. and 3. with any external service
+                                <span>IVAO Radar</span> does not share any data, described in 2. and 3. with any external service
                             </li>
                             <li>
-                                <span>VATSIM Radar</span> does not include any other analytics scripts or hidden pixels that can be used to track
+                                <span>IVAO Radar</span> does not include any other analytics scripts or hidden pixels that can be used to track
                                 user without explicit notice via Data Policy Popup
                             </li>
                             <li>
@@ -128,7 +128,7 @@
                         <ol>
                             <li>
                                 User may delete Persistent stored data, described in 2., by using <span>Delete Account</span> button in
-                                <span>VATSIM Radar Settings</span>
+                                <span>IVAO Radar Settings</span>
                             </li>
                             <li>
                                 Data will be automatically permanently deleted withing <span>7 days</span> from deletion request, including 3rd party backups and snapshots

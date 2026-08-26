@@ -1,6 +1,6 @@
-# Year 2 of VATSIM Radar
+# Year 2 of IVAO Radar
 
-Hey folks! 2 years ago, VATSIM Radar has entered Open Beta. We have come a long way, but since yall already tired of me talking about our past, let's talk about future.
+Hey folks! 2 years ago, IVAO Radar has entered Open Beta. We have come a long way, but since yall already tired of me talking about our past, let's talk about future.
 
 ## Traditional stats
 
@@ -68,7 +68,7 @@ While performance has already been improved significantly in V2, including:
 1. Map lags as hell when zoomed out. A new feature to "declutter" aircraft is coming in v2 that will automatically hide aircraft if they overlap one another, leading to significant render boost
 2. Map lags for a while when VATGlasses is enabled. VATGlasses render has been reworked completely, leading to significant performance boost (except for those who use Combined mode)
 3. Map layer is lagging when zooming in. Basic layer seems to be good for most people, and this does not have a good solution. Hovewer, we plan to add paywalled "MapBox" layer. It costs money, and will only be available to Patreon members, offering a better memory and performance
-4. VATSIM Radar eats more traffic than it could. Regular datafeed will be reduced in size in V2 with a small performance cost on client-side
+4. IVAO Radar eats more traffic than it could. Regular datafeed will be reduced in size in V2 with a small performance cost on client-side
 
 ### Performance Mode
 
@@ -82,13 +82,13 @@ We plan to add a Performance Mode toggle in V2, with such settings being locked:
 
 Overall, V2 will be much better on performance and interaction by itself, so you may not need that. 
 
-## VATSIM Radar Data
+## IVAO Radar Data
 
-Let's also talk about the future of 2 very specific VATSIM Radar features: VAs badges and ATC duplication.
+Let's also talk about the future of 2 very specific IVAO Radar features: VAs badges and ATC duplication.
 
 ### VA Badges
 
-This system will likely be deprecated in V2 in favor of prioritizing official VAs, or by using a more centralized system based on VATSIM Radar.
+This system will likely be deprecated in V2 in favor of prioritizing official VAs, or by using a more centralized system based on IVAO Radar.
 
 Current dataset is hard to maintain, and also allows for custom text in remarks, which is not good.
 
@@ -96,6 +96,6 @@ Current dataset is hard to maintain, and also allows for custom text in remarks,
 
 ATC duplication will likely be moved to a separate repository, or a new service. 
 
-This repository could also be a new dataset (VATSpy dataset replacement), VR-based repo (like VAs, but more organized), or a new centralized system based on VATSIM Radar.
+This repository could also be a new dataset (VATSpy dataset replacement), VR-based repo (like VAs, but more organized), or a new centralized system based on IVAO Radar.
 
 Following this, I plan to enforce validation for all ATC duplication contributors, with the [same list as VATSpy/SimAware dataset](https://docs.google.com/spreadsheets/u/4/d/e/2PACX-1vRHzHhKz4icslNkd3I6mF1Mp_6gan4muRcWZb8fCYL8_S0C6GDpG409xQGTmPAXLPupEWWws3euNK7O/pubhtml?gid=0)

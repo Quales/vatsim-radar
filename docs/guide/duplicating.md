@@ -52,4 +52,4 @@ In such case, controller is duplicated as-is, excluding **callsign** - this is b
 ## Other sector
 
 Contact us in Discord if you are duplicating your sectors internally, have this system documented, and want to make it
-work on VATSIM Radar.
+work on IVAO Radar.

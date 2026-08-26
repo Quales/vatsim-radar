@@ -26,7 +26,7 @@ const statsTab = computed(() => {
 useHead(() => ({
     title: props.pageTitle || `${ statsTab.value[0].toUpperCase() }${ statsTab.value.slice(1, statsTab.value.length) }`,
     titleTemplate(title) {
-        return `${ title } | VATSIM Radar Stats`;
+        return `${ title } | IVAO Radar Stats`;
     },
 }));
 </script>

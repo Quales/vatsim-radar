@@ -1,6 +1,6 @@
-# VATSIM Radar v2 feedback and what's next
+# IVAO Radar v2 feedback and what's next
 
-Hey all. VATSIM Radar v2 has released 2 weeks ago as I'm writing this post.
+Hey all. IVAO Radar v2 has released 2 weeks ago as I'm writing this post.
 
 Let's talk about your feedback and answer some questions.
 
@@ -126,7 +126,7 @@ This update is expected to be released in coming weeks.
 
 ### v2.1
 
-As for our next steps, based on my roadmap and community feedback, VATSIM Radar v2.1 will probably have such features:
+As for our next steps, based on my roadmap and community feedback, IVAO Radar v2.1 will probably have such features:
 
 1. VATSIM User Page. Planned features:
     - StatSim integration
@@ -146,6 +146,6 @@ As for considering features, winners are Hoppie and Collision prediction. If I'l
 prediction, I will first talk about it with Supervisor department - so this feature may not be implemented if they say
 so.
 
-VATSIM Radar v2.1 is expected to release before the end of this year.
+IVAO Radar v2.1 is expected to release before the end of this year.
 
-Keep your feedback coming - I'm always open for it in Discord. Thank you for using VATSIM Radar.
+Keep your feedback coming - I'm always open for it in Discord. Thank you for using IVAO Radar.

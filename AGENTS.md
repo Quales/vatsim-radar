@@ -1,4 +1,4 @@
-# VATSIM Radar Agents.md
+# IVAO Radar Agents.md
 
 You are working in a complicated project. Keep this in mind while making significant changes.
 

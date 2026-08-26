@@ -221,7 +221,7 @@
                             href="/discord"
                             target="_blank"
                         >
-                            VATSIM Radar Development
+                            IVAO Radar Development
                         </ui-button>
                     </div>
                 </ui-tooltip>

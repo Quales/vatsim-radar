@@ -7,13 +7,13 @@
             :class="{ 'about_hero--light': store.getCurrentTheme === 'light' }"
         >
             <div class="about_hero_title">
-                About <span>VATSIM Radar</span>
+                About <span>IVAO Radar</span>
             </div>
             <div class="about_hero_text">
-                VATSIM Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
+                IVAO Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
             </div>
             <div class="about_hero_subtext">
-                VATSIM Radar Beta was opened to the public on <span>17 April 2024</span>. That is the same day that Sean Bean turned 66. Coincidence? We think not.
+                IVAO Radar Beta was opened to the public on <span>17 April 2024</span>. That is the same day that Sean Bean turned 66. Coincidence? We think not.
             </div>
             <div class="about_hero_info">
                 <div class="about_hero_info_item">
@@ -206,7 +206,7 @@
                         Support Us
                     </div>
                     <div class="about__support_text">
-                        VATSIM Radar is funded by generous members of the community. Help us keep the service running!
+                        IVAO Radar is funded by generous members of the community. Help us keep the service running!
                     </div>
                     <ui-button
                         class="about__support_button"

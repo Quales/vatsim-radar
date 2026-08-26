@@ -218,7 +218,7 @@
             </template>
             <div class="__info-sections">
                 <ui-block-title remove-margin>
-                    VATSIM Radar JSON
+                    IVAO Radar JSON
                 </ui-block-title>
                 <ui-block-title remove-margin>
                     Import as file
@@ -245,7 +245,7 @@
                     </details>
                 </ui-notification>
                 <ui-button @click="fileInput?.click()">
-                    Import VATSpy XML or VATSIM Radar JSON
+                    Import VATSpy XML or IVAO Radar JSON
                 </ui-button>
                 <input
                     v-show="false"

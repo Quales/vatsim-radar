@@ -6,7 +6,7 @@ Let's start with some stats. I had to apply database size increase recently due 
 
 ## Stats
 
-- 77k of people have logged in at least once. That's an absolute insane value. At least 28k of them have logged into VATSIM Radar within last month
+- 77k of people have logged in at least once. That's an absolute insane value. At least 28k of them have logged into IVAO Radar within last month
 - 21k of people have Navigraph Charts subscription, with 326 having Data Only Navigraph subscription
 - More than 11k of favorite lists were created, with 850+ custom favorite lists
 - People have saved 517 bookmarks and 227 filters (I should add some kind of achievement for that lol)
@@ -40,9 +40,9 @@ I can't thank you all enough - and I promise, you'll have more to come from me t
 
 ## What's next
 
-I'll be working on VATSIM Radar v2.0 next year. I don't have ANY estimate, and this development could take months.
+I'll be working on IVAO Radar v2.0 next year. I don't have ANY estimate, and this development could take months.
 
-I think VATSIM Radar is in a pretty good state currently performance- and feature-wise, and I'll still publish small releases and hotfixes time to time while we develop 2.0.
+I think IVAO Radar is in a pretty good state currently performance- and feature-wise, and I'll still publish small releases and hotfixes time to time while we develop 2.0.
 
 ### Confirmed for 2.0
 

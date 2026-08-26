@@ -3,8 +3,8 @@ import packageJson from '../../package.json' with { type: 'json' };
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: 'VATSIM Radar',
-    description: 'Documentation describing VATSIM Radar features and more',
+    title: 'IVAO Radar',
+    description: 'Documentation describing IVAO Radar features and more',
     lang: 'en-US',
     head: [
         ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
@@ -60,11 +60,11 @@ export default defineConfig({
                         link: '/introduction/about',
                         items: [
                             {
-                                text: `VATSIM Radar v2 feedback`,
+                                text: `IVAO Radar v2 feedback`,
                                 link: '/blog/v2-post-release',
                             },
                             {
-                                text: 'Year 2 of VATSIM Radar',
+                                text: 'Year 2 of IVAO Radar',
                                 link: '/blog/year-2-of-radar',
                             },
                             {

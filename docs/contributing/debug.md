@@ -1,6 +1,6 @@
 # Data Debugging
 
-VATSIM Radar provides ways to debug [Data](./data) Debugging.
+IVAO Radar provides ways to debug [Data](./data) Debugging.
 
 ## Fake ATC
 

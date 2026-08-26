@@ -5,7 +5,7 @@
         width="600px"
     >
         <template #title>
-            VATSIM Radar initialization
+            IVAO Radar initialization
         </template>
         <div class="init-items">
             <div

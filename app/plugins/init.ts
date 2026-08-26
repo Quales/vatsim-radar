@@ -49,13 +49,13 @@ export default defineNuxtPlugin(async () => {
 
         return {
             titleTemplate(title) {
-                if (!title) return 'VATSIM Radar';
-                return `${ title } | VATSIM Radar`;
+                if (!title) return 'IVAO Radar';
+                return `${ title } | IVAO Radar`;
             },
             meta: [
                 {
                     name: 'og:site_name',
-                    content: 'VATSIM Radar',
+                    content: 'IVAO Radar',
                 },
                 {
                     name: 'og:type',

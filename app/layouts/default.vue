@@ -134,7 +134,7 @@ onMounted(() => {
         }).catch(e => {
             if (isFetchError(e)) {
                 if (e.status === 403) {
-                    alert(`Uh oh, it seems you are no longer a sup, or an unknown issue in VATSIM Radar has occurred. We're sorry (and also removed sup flag from your account)`);
+                    alert(`Uh oh, it seems you are no longer a sup, or an unknown issue in IVAO Radar has occurred. We're sorry (and also removed sup flag from your account)`);
                     store.user!.isSup = false;
                 }
             }
