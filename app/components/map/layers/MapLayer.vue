@@ -184,7 +184,7 @@ async function initLayer() {
     if (layer.value.url === 'basic') {
         tileLayer.value = new TileLayer({
             source: new XYZ({
-                url: store.theme === 'light' ? 'http://10.22.5.7:3251/basic/light/{z}/{x}/{y}.png' : 'http://10.22.5.7:3251/basic/dark/{z}/{x}/{y}.png',
+                url: store.theme === 'light' ? 'http://localhost:3251/basic/light/{z}/{x}/{y}.png' : 'http://localhost:3251/basic/dark/{z}/{x}/{y}.png',
                 wrapX: true,
                 tileSize: 256,
                 minZoom: 2,

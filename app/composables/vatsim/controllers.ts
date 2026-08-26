@@ -389,11 +389,38 @@ function addATISLinks(lines: string[]) {
     });
 }
 
-export function getATIS(controller: VatsimShortenedController, parseLinks = true) {
-    let atis = controller.text_atis?.filter(x => x.trim()).map(x => parseEncoding(x.replace(/<\/?[^>]+>/g, ''), controller.callsign)) ?? null;
-    if (atis && parseLinks) atis = addATISLinks(atis);
+export function getATIS(
+    controller: VatsimShortenedController,
+    parseLinks = true,
+) {
+    let atis = controller.text_atis
+            ?.filter(x => x.trim())
+            .map(x => parseEncoding(
+                x.replace(/<\/?[^>]+>/g, ''),
+                controller.callsign,
+            ))
+            .flatMap(x => x.split(/\/\/|\|\|/))
+            .map(x => x.trim())
+            .filter(Boolean)
+            // Supprime les lignes du type :
+            // ts-1.eu-west-2.ivao.aero/CYWG_APP
+            .filter(x => !/^[\w.-]+\.ivao\.aero\/[\w-]+$/i.test(x))
+        ?? null;
 
-    if (!controller.isATIS) return atis;
-    if (atis && atis.filter(x => x.replaceAll(' ', '').length > 20).length > atis.length - 2) return [atis.join(' ')];
+    if (atis && parseLinks) {
+        atis = addATISLinks(atis);
+    }
+
+    if (!controller.isATIS) {
+        return atis;
+    }
+
+    if (
+        atis &&
+        atis.filter(x => x.replaceAll(' ', '').length > 20).length > atis.length - 2
+    ) {
+        return [atis.join(' ')];
+    }
+
     return atis;
 }

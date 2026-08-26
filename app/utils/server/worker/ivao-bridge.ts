@@ -35,16 +35,16 @@ const DEFAULT_FACILITIES: VatsimData['facilities'] = [
 
 const DEFAULT_RATINGS: VatsimData['ratings'] = [
     { id: 0, short: 'OBS', long: 'Observer' },
-    { id: 1, short: 'S1', long: 'Student 1' },
-    { id: 2, short: 'S2', long: 'Student 2' },
-    { id: 3, short: 'S3', long: 'Student 3' },
-    { id: 4, short: 'C1', long: 'Controller 1' },
-    { id: 5, short: 'C2', long: 'Controller 2' },
-    { id: 6, short: 'C3', long: 'Controller 3' },
-    { id: 7, short: 'I1', long: 'Instructor 1' },
-    { id: 8, short: 'I2', long: 'Instructor 2' },
-    { id: 9, short: 'I3', long: 'Instructor 3' },
-    { id: 10, short: 'SUP', long: 'Supervisor' },
+    { id: 1, short: 'AS0', long: 'Student' },
+    { id: 2, short: 'AS1', long: 'ATC Applicant' },
+    { id: 3, short: 'AS2', long: 'ATC Trainee' },
+    { id: 4, short: 'AS3', long: 'Advanced ATC Trainee' },
+    { id: 5, short: 'ADC', long: 'Aerodrome Controller' },
+    { id: 6, short: 'APC', long: 'Approach Controller' },
+    { id: 7, short: 'ACC', long: 'Centre Controller' },
+    { id: 8, short: 'SEC', long: 'Senior Controller' },
+    { id: 9, short: 'SAI', long: 'Senior ATC Instructor' },
+    { id: 10, short: 'CAI', long: 'Chief ATC Instructor' },
     { id: 11, short: 'ADM', long: 'Administrator' },
 ];
 
@@ -181,6 +181,14 @@ function mapPilot(entry: IVAOConnection): VatsimPilot {
     };
 }
 
+function readAtisLines(entry: IVAOConnection): string[] {
+    const atis = readRecord(entry.atis);
+    const lines = readArray(atis.lines);
+    if (lines.length) return lines.map(x => String(x)).filter(Boolean);
+
+    return readArray(entry.atis).map(x => String(x)).filter(Boolean);
+}
+
 function mapController(entry: IVAOConnection): VatsimController {
     const timestamp = readTimestamp(entry.updatedAt, entry.createdAt);
     const atcSession = readRecord(entry.atcSession);
@@ -207,7 +215,7 @@ function mapController(entry: IVAOConnection): VatsimController {
         rating: readNumber(entry.rating) ?? 0,
         server: readString(entry.serverId) ?? 'IVAO',
         visual_range: readNumber(entry.visualRange) ?? 200,
-        text_atis: readArray(entry.atis).map(x => String(x)).filter(Boolean),
+        text_atis: readAtisLines(entry),
         last_updated: timestamp,
         logon_time: readTimestamp(entry.createdAt, timestamp),
     };
@@ -227,6 +235,51 @@ function toConnectionArray(value: unknown): IVAOConnection[] {
     return Array.isArray(value) ? value.map(readRecord) : [];
 }
 
+function getConnectionLookupValue(entry: IVAOConnection, key: 'id' | 'userId' | 'callsign'): string | undefined {
+    if (key === 'callsign') {
+        const callsign = readString(entry.callsign);
+        return callsign ? callsign.toUpperCase() : undefined;
+    }
+
+    const numeric = readNumber(entry[key]);
+    return numeric !== undefined ? String(numeric) : undefined;
+}
+
+function buildConnectionLookup(entries: IVAOConnection[]) {
+    const byId = new Map<string, IVAOConnection>();
+    const byUserId = new Map<string, IVAOConnection>();
+    const byCallsign = new Map<string, IVAOConnection>();
+
+    for (const entry of entries) {
+        const id = getConnectionLookupValue(entry, 'id');
+        const userId = getConnectionLookupValue(entry, 'userId');
+        const callsign = getConnectionLookupValue(entry, 'callsign');
+
+        if (id) byId.set(id, entry);
+        if (userId) byUserId.set(userId, entry);
+        if (callsign) byCallsign.set(callsign, entry);
+    }
+
+    return { byId, byUserId, byCallsign };
+}
+
+function enrichFromWhazzup(entry: IVAOConnection, whazzupLookup: ReturnType<typeof buildConnectionLookup>): IVAOConnection {
+    const id = getConnectionLookupValue(entry, 'id');
+    const userId = getConnectionLookupValue(entry, 'userId');
+    const callsign = getConnectionLookupValue(entry, 'callsign');
+
+    const match = (id && whazzupLookup.byId.get(id)) ||
+        (userId && whazzupLookup.byUserId.get(userId)) ||
+        (callsign && whazzupLookup.byCallsign.get(callsign));
+
+    if (!match) return entry;
+
+    return {
+        ...match,
+        ...entry,
+    };
+}
+
 export function convertIvaoDataToVatsimData(payload: unknown, summaries?: IVAOSummaryPayload): VatsimData {
     const body = readRecord(payload);
     const clients = readRecord(body.clients);
@@ -238,8 +291,15 @@ export function convertIvaoDataToVatsimData(payload: unknown, summaries?: IVAOSu
     const summaryPilots = toConnectionArray(summaries?.pilotsSummary);
     const summaryAtcs = toConnectionArray(summaries?.atcSummary);
 
-    const rawPilots = summaryPilots.length ? summaryPilots : whazzupPilots;
-    const rawAtcs = summaryAtcs.length ? summaryAtcs : whazzupAtcs;
+    const whazzupPilotsLookup = buildConnectionLookup(whazzupPilots);
+    const whazzupAtcsLookup = buildConnectionLookup(whazzupAtcs);
+
+    const rawPilots = summaryPilots.length
+        ? summaryPilots.map(entry => enrichFromWhazzup(entry, whazzupPilotsLookup))
+        : whazzupPilots;
+    const rawAtcs = summaryAtcs.length
+        ? summaryAtcs.map(entry => enrichFromWhazzup(entry, whazzupAtcsLookup))
+        : whazzupAtcs;
     const rawObservers = whazzupObservers;
 
     const pilots: VatsimData['pilots'] = [];
