@@ -88,6 +88,7 @@ services:
         image: mysql
         cap_add:
             - SYS_NICE
+        container_name: vatsim-radar-db
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
             - MYSQL_DATABASE=radar
@@ -104,6 +105,7 @@ services:
 
     redis:
         image: redis
+        container_name: vatsim-radar-redis
         command: redis-server /usr/local/etc/redis/redis.conf --requirepass RADAR
         expose:
             - 6379
@@ -117,7 +119,7 @@ services:
 
     questdb:
         image: questdb/questdb:9.4.3
-        container_name: vatsim-radar-prebuilt-questdb
+        container_name: vatsim-radar-questdb
         environment:
             - QDB_LOG_W_STDOUT_LEVEL=ERROR
             - QDB_SHARED_WORKER_COUNT=1
