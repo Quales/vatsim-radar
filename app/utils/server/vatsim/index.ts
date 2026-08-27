@@ -42,12 +42,12 @@ export function vatsimAuthOrRefresh(code: string, type: 'auth' | 'refresh') {
 }
 
 export interface VatsimUser {
-    cid: string
-    id: string
-    firstName: string
-    lastName: string
-    fullName: string
-    publicNickname: string
+    cid: string;
+    id: string;
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    publicNickname: string;
     personal: {
         name_first: string;
         name_last: string;

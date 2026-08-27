@@ -359,7 +359,6 @@ import UiText from '~/components/ui/text/UiText.vue';
 import { getPilotTrueAltitude } from '~/utils/shared/vatsim';
 import { isValidDate } from '~/utils/shared';
 import UiSpoiler from '~/components/ui/text/UiSpoiler.vue';
-import SpeakerIcon from '~/assets/icons/basic/speaker.svg?component';
 
 const props = defineProps({
     pilot: {

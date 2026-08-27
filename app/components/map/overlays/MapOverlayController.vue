@@ -213,7 +213,6 @@ import UiDataList from '~/components/ui/data/UiDataList.vue';
 import UiDataContainer from '~/components/ui/data/UiDataContainer.vue';
 import UiChip from '~/components/ui/text/UiChip.vue';
 import { isPointInExtent } from '~/composables';
-import SpeakerIcon from '~/assets/icons/basic/speaker.svg?component';
 
 const props = defineProps({
     overlay: {
