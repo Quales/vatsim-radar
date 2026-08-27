@@ -37,7 +37,7 @@ export default defineConfig({
                 items: [
                     {
                         text: 'Report an issue / request a feature',
-                        link: 'https://github.com/VATSIM-Radar/vatsim-radar/issues/new/choose',
+                        link: 'https://github.com/Quales/vatsim-radar/issues/new/choose',
                     },
                     {
                         text: 'Changelog',
@@ -45,7 +45,7 @@ export default defineConfig({
                     },
                     {
                         text: 'Next Changelog',
-                        link: 'https://github.com/VATSIM-Radar/vatsim-radar/blob/next/CHANGELOG.md',
+                        link: 'https://github.com/Quales/vatsim-radar/blob/next/CHANGELOG.md',
                     },
                 ],
             },
@@ -133,7 +133,7 @@ export default defineConfig({
                     },
                     {
                         text: 'Report an issue/request',
-                        link: 'https://github.com/VATSIM-Radar/vatsim-radar/issues/new/choose',
+                        link: 'https://github.com/Quales/vatsim-radar/issues/new/choose',
                     },
                 ],
             },
@@ -146,12 +146,12 @@ export default defineConfig({
             },
             {
                 icon: 'github',
-                link: 'https://github.com/VATSIM-Radar/vatsim-radar',
+                link: 'https://github.com/Quales/vatsim-radar',
             },
         ],
         externalLinkIcon: true,
         editLink: {
-            pattern: 'https://github.com/VATSIM-Radar/vatsim-radar/tree/next/docs/:path',
+            pattern: 'https://github.com/Quales/vatsim-radar/tree/next/docs/:path',
         },
         sidebarMenuLabel: packageJson.version,
         logo: {
