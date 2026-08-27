@@ -29,7 +29,7 @@
                         Contact
                     </div>
                     <div class="about_hero_info_item_text">
-                        <a href="mailto:dan@vatsim-radar.com">dan@vatsim-radar.com</a>
+                        <a href="mailto:dan@ivao-radar.com">dan@ivao-radar.com</a>
                     </div>
                 </div>
             </div>

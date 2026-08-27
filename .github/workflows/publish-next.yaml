@@ -24,7 +24,7 @@ jobs:
       packages: write
     environment:
       name: next
-      url: https://next.vatsim-radar.com
+      url: https://next.ivao-radar.com
     steps:
       - uses: actions/checkout@v4
       - name: Login to GitHub Container Registry
@@ -155,7 +155,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: docs
-      url: https://docs.vatsim-radar.com
+      url: https://docs.ivao-radar.com
     steps:
       - name: Checkout
         uses: actions/checkout@v4

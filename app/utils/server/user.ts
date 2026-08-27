@@ -111,7 +111,7 @@ export async function getAllPrivateUsers(): Promise<Record<string, boolean | str
     const object = Object.fromEntries(users.map(user => [user.vatsim?.id, user.privateMode ?? false]).filter(x => x[0] && x[1]));
 
     if (isNext()) {
-        const privacy = await $fetch<Record<string, boolean | string>>(`https://vatsim-radar.com/api/user/lists/privacy`, {
+        const privacy = await $fetch<Record<string, boolean | string>>(`https://ivao-radar.com/api/user/lists/privacy`, {
             headers: { authorization: `Bearer ${ process.env.VATSIM_IDENT_TOKEN }` },
         }).catch(() => ({} as Record<string, boolean | string>));
         for (const user in privacy) {

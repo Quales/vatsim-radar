@@ -16,9 +16,9 @@
                 </div>
                 <a
                     class="privacy-policy_hero_contact_link"
-                    href="mailto:dan@vatsim-radar.com"
+                    href="mailto:dan@ivao-radar.com"
                 >
-                    dan@vatsim-radar.com
+                    dan@ivao-radar.com
                 </a>
             </div>
         </div>
@@ -31,7 +31,7 @@
                         <div class="privacy-policy_section_title">General terms</div>
                         <ol>
                             <li>
-                                All described below belongs to service located on <span>vatsim-radar.com</span> and it's subdomains
+                                All described below belongs to service located on <span>ivao-radar.com</span> and it's subdomains
                             </li>
                             <li>
                                 Services on this domain and subdomains would be described from later on as <span>IVAO Radar</span>

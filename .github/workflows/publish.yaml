@@ -23,7 +23,7 @@ jobs:
       packages: write
     environment:
       name: production
-      url: https://vatsim-radar.com
+      url: https://ivao-radar.com
     steps:
       - uses: actions/checkout@v4
       - name: Login to GitHub Container Registry

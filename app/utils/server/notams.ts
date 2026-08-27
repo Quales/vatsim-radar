@@ -75,7 +75,7 @@ export async function getAirportNotams(icao: string, formatted?: boolean): Promi
         return formatted ? cachedNotams.map(x => x.formattedText as string).filter(x => !!x) : cachedNotams;
     }
 
-    const request = await $fetch<VatsimAirportDataNotam[]>(`http://notams.vatsim-radar.com:3000/notams/${ icao }`, {
+    const request = await $fetch<VatsimAirportDataNotam[]>(`http://notams.ivao-radar.com:3000/notams/${ icao }`, {
         timeout: 5000,
     });
 

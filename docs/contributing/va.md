@@ -17,6 +17,6 @@ Examples:
 
 - `CS/Siberian`: display VA with Siberian callsign with default "`S7 Airlines`" name
 - `CS/Siberian/S7 Virtual`: display VA with Siberian callsign and "`S7 Virtual`" name
-- `CS/Siberian/S7 Virtual WEB/VATSIM-RADAR.COM`: display VA with Siberian callsign, "`S7 Virtual`" name and open VA website on click
+- `CS/Siberian/S7 Virtual WEB/ivao-radar.com`: display VA with Siberian callsign, "`S7 Virtual`" name and open VA website on click
 
-You can also use `-`, `=` and `,` as separators: `CS-Siberian-S7 Virtual WEB-VATSIM-RADAR.COM`, `CS,Siberian,S7 Virtual WEB,VATSIM-RADAR.COM` or `CS=Siberian=S7 Virtual WEB=VATSIM-RADAR.COM`. To support https:// scheme, use `,` instead of `:`.
+You can also use `-`, `=` and `,` as separators: `CS-Siberian-S7 Virtual WEB-ivao-radar.com`, `CS,Siberian,S7 Virtual WEB,ivao-radar.com` or `CS=Siberian=S7 Virtual WEB=ivao-radar.com`. To support https:// scheme, use `,` instead of `:`.

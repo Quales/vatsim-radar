@@ -82,7 +82,7 @@
                     <a
                         v-if="store.config.showCornerLogo"
                         class="map_logo"
-                        href="https://vatsim-radar.com"
+                        href="https://ivao-radar.com"
                         target="_blank"
                     >
                         <branding-logo width="50px"/>

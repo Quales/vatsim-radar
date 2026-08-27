@@ -416,7 +416,7 @@ function mapAirlines(airlines: RadarDataAirline[]): RadarDataAirlinesList {
 }
 
 export async function updateAirlines() {
-    const data = await $fetch<RadarDataAirlineAll>(!isDebug() ? 'http://data:3000/airlines/all' : 'https://data.vatsim-radar.com/airlines/all', {
+    const data = await $fetch<RadarDataAirlineAll>(!isDebug() ? 'http://data:3000/airlines/all' : 'https://data.ivao-radar.com/airlines/all', {
         retry: 3,
     });
 

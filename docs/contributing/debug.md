@@ -62,8 +62,8 @@ This is available without local setup.
 
 Open:
 
-- VATSpy: `https://vatsim-radar.com/data/vatspy/PULLREQUEST/compare`
-- SimAware TRACON: `https://vatsim-radar.com/data/simaware/PULLREQUEST/compare`
+- VATSpy: `https://ivao-radar.com/data/vatspy/PULLREQUEST/compare`
+- SimAware TRACON: `https://ivao-radar.com/data/simaware/PULLREQUEST/compare`
 
 Where PULLREQUEST is Pull Request ID (ex. `https://github.com/vatsimnetwork/vatspy-data-project/pull/123` - ID is 123. 
 

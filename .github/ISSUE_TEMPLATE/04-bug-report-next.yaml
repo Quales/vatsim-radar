@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Hello! This is a form for reporting an issue on https://next.vatsim-radar.com/ only. 
+        Hello! This is a form for reporting an issue on https://next.ivao-radar.com/ only. 
         
         Before reporting, please also check existing issues in this repository - you can filter them by "bug" and "next" labels (also check closed ones).
         

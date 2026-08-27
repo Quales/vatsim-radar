@@ -186,7 +186,7 @@
                     </template>
                 </ui-button>
                 <ui-button
-                    href="https://docs.vatsim-radar.com"
+                    href="https://docs.ivao-radar.com"
                     size="S"
                     target="_blank"
                     type="secondary"

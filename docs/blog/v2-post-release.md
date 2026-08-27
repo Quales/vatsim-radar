@@ -91,7 +91,7 @@ the next day I've received this issue. "Old design good new bad" is not a valid 
 anyone.
 
 Some don't like new "short" ATC icons, you can always bring them back to
-v1 [in Settings](https://next.vatsim-radar.com/settings/map/airports) by setting Short facilities view to Never.
+v1 [in Settings](https://next.ivao-radar.com/settings/map/airports) by setting Short facilities view to Never.
 
 ### Desktop App
 

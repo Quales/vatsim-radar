@@ -2,7 +2,7 @@
 
 Get all the answers to your frequently asked questions!
 ::: tip 
-Is your question not listed here? Ask in the [IVAO Radar Discord server!](https://vatsim-radar.com/discord)
+Is your question not listed here? Ask in the [IVAO Radar Discord server!](https://ivao-radar.com/discord)
 :::
 
 ## General:
@@ -23,7 +23,7 @@ Is your question not listed here? Ask in the [IVAO Radar Discord server!](https:
 <br>
 
 #### Is `insert feature here` coming to IVAO Radar?<br> 
-- Check out our [Roadmap](http://vatsim-radar.com/roadmap) to learn more!
+- Check out our [Roadmap](http://ivao-radar.com/roadmap) to learn more!
 
 ## Map Icons
 

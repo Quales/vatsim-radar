@@ -1,5 +1,5 @@
 name: Bug report
-description: Report found issue on vatsim-radar.com
+description: Report found issue on ivao-radar.com
 labels: ["bug", "pending triage"]
 assignees: ["daniluk4000"]
 type: "Bug"

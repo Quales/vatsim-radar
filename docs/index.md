@@ -16,7 +16,7 @@ hero:
       
     - theme: alt
       text: Website
-      link: https://vatsim-radar.com
+      link: https://ivao-radar.com
 
 features:
 - icon: ⭐

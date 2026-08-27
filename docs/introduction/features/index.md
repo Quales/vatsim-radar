@@ -62,7 +62,7 @@ View planned and active VATSIM Events.
 
 - Switch between local and zulu time
 - View description, participated airports and suggested routes
-- Open on separate page to share for friends or social networks. Example: https://vatsim-radar.com/events/14572
+- Open on separate page to share for friends or social networks. Example: https://ivao-radar.com/events/14572
 
 ## Statistics
 

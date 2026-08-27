@@ -13,7 +13,7 @@ outline: [ 2, 3 ]
 ### Highlights
 
 - Add IPC handlers to expose bookmarks and websockets by neilenns. Learn
-  more: https://docs.vatsim-radar.com/introduction/features/websocket-api. That will also allow to use StreamDeck with
+  more: https://docs.ivao-radar.com/introduction/features/websocket-api. That will also allow to use StreamDeck with
   VATSIM Radar - marketplace plugin is coming
 - Improved hover, smoothness and font here and there
 - Restored EOBT, Time Enroute and Fuel Time in Prefile window
@@ -548,7 +548,7 @@ This release is focused on a small bug fixes and improvements, including Navigra
 - You can now choose to show raw SIGMET data only when clicking on them
 - Default ground traffic mode is now "hide if zoomed out" instead of "show all"
 - Reordered booking calendar time options by 1532684
-- Added changelog into https://docs.vatsim-radar.com/changelog - view it for cool VR history
+- Added changelog into https://docs.ivao-radar.com/changelog - view it for cool VR history
 - Model matched E6 -> B703
 - Max map zoom has been limited to 20
 - Improved gates rendering performance - their font is also smaller now
@@ -589,7 +589,7 @@ This release is focused on a small bug fixes and improvements, including Navigra
 ## 1.2.3.2
 
 - Fixed **some** cyrillic ATC info not being parsed correctly
-- Updated auto-parsed domains whitelist: added vatsim-radar.com (lol), vatrus.info, uuwv.ru, vatsim-scandinavia.org,
+- Updated auto-parsed domains whitelist: added ivao-radar.com (lol), vatrus.info, uuwv.ru, vatsim-scandinavia.org,
   vatcar.net. Current list also includes vats.im, discord.gg, vatsca.org, vatger.de
 - Arrival airport will now always be visible in Proc Aircraft tab, even when not departed yet
 - Fixed aircraft route sometimes appearing when on-hover parsing is disabled
@@ -631,7 +631,7 @@ patient - that saves you dozens MBs of memory.
   current/previous METAR
 - You can now disable route parsing on hover
 - Added ZOA NCT Area mapping logic by `csko` and ZMA Ocean Area logic by `glott` -
-  see https://docs.vatsim-radar.com/guide/duplicating\
+  see https://docs.ivao-radar.com/guide/duplicating\
 - Added altitude correction to Speed & Altitude graph, so it now shows altitude according to QNH
 - Pilot info and airline name are now aligned in pilot overlay
 - Added registration, alternates (w/ takeoff/enroute) and Voice Rules to pilot overlay
@@ -1512,7 +1512,7 @@ Added new Map Layer - Carto Vector Mode! Rendered in your browser with more brig
 - Added airports names to aircraft on-hover popup
 - Transition display now clarifies where you can find level and altitude
 - Map filter dropdown is now open for new users by default
-- You can now also send links for callsign instead of CID, for example, "https://vatsim-radar.com/?pilot=SBI437"
+- You can now also send links for callsign instead of CID, for example, "https://ivao-radar.com/?pilot=SBI437"
 - Reworked stepclimbs display to show waypoints and whole stepclimbs list
 - Added kilometers support for stepclimbs display
 - Added support for predefined labels coordinates from SimAware TRACON

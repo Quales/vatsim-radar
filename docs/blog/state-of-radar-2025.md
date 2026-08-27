@@ -20,7 +20,7 @@ Let's start with some stats. I had to apply database size increase recently due 
 
 ## Your Own Stats
 
-Use `/stats` command in our official [Discord](https://vatsim-radar.com/discord) server to show your stats to everyone!
+Use `/stats` command in our official [Discord](https://ivao-radar.com/discord) server to show your stats to everyone!
 
 Have something to hide? Use `/hidden-stats` to preview it first.
 
@@ -30,7 +30,7 @@ This was a huuge year for Radar! We've delivered:
 - v1.0 with VATGlasses, Airports Layouts, Friends, Filters and Bookmarks
 - v1.1 with SIGMETs, bookings and live stats
 - v1.2 with NAVData on map (huuuge: aircraft route, procedures and more), distance tool and weather request
-- A LOT of quality of life features - visit [changelog](https://docs.vatsim-radar.com/changelog.html) to check version history
+- A LOT of quality of life features - visit [changelog](https://docs.ivao-radar.com/changelog.html) to check version history
 
 ## Your Support
 
@@ -47,7 +47,7 @@ I think IVAO Radar is in a pretty good state currently performance- and feature-
 ### Confirmed for 2.0
 
 - Partial redesign: new fonts, new colors, new design for various elements, more continuous UI look. New... logo?
-- [Roadmap](https://vatsim-radar.com/roadmap) visual rework for clarity on what to expect in coming releases
+- [Roadmap](https://ivao-radar.com/roadmap) visual rework for clarity on what to expect in coming releases
 - Hoppie integration
 - Click/hover interactions rework across all elements on a map
 - Settings 2.0: unified, proper-made and auto-saved settings as a separate page with a much better UI/UX
@@ -64,7 +64,7 @@ I think IVAO Radar is in a pretty good state currently performance- and feature-
 ### 2.0 testing
 
 This (huge) release will be tested in 3 phases:
-- New selected Early Adopters testers joining - follow news in our [Discord](https://vatsim-radar.com/discord)
+- New selected Early Adopters testers joining - follow news in our [Discord](https://ivao-radar.com/discord)
 - All who applied for Early Adopters access
 - Open Beta
 

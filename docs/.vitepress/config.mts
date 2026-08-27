@@ -142,7 +142,7 @@ export default defineConfig({
         socialLinks: [
             {
                 icon: 'discord',
-                link: 'https://vatsim-radar.com/discord',
+                link: 'https://ivao-radar.com/discord',
             },
             {
                 icon: 'github',

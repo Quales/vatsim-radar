@@ -31,7 +31,7 @@ export function encodeCachePart(value: string | number) {
 }
 
 export function isProductionMode() {
-    return typeof process !== 'undefined' ? process.env.DOMAIN === 'https://vatsim-radar.com' : useRuntimeConfig().public.DOMAIN === 'https://vatsim-radar.com';
+    return typeof process !== 'undefined' ? process.env.DOMAIN === 'https://ivao-radar.com' : useRuntimeConfig().public.DOMAIN === 'https://ivao-radar.com';
 }
 
 export interface FilterAltitudeConfig {

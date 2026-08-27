@@ -21,11 +21,11 @@ Funds will be used to pay for map layers, Cloudflare and Server traffic.
 
 Donators get access to Early-Access branches, dedicated Discord channels to discuss and engage in the development, and their name showcased on our Patreon Appreciation page.
 
-:point_right: **Visit our [Patreon page](https://vatsim-radar.com/support-us) for more details!** :point_left:
+:point_right: **Visit our [Patreon page](https://ivao-radar.com/support-us) for more details!** :point_left:
 
 ## How to contact the development team?
 
-Don't be a stranger; [Email us!](mailto:dan@vatsim-radar.com)
+Don't be a stranger; [Email us!](mailto:dan@ivao-radar.com)
 
 ## How to contribute to IVAO Radar?
 

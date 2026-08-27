@@ -10,7 +10,7 @@ const iframeWhitelist = [
     'urrv.me',
     'vatsim.net',
     'vatsim-petersburg.com',
-    'vatsim-radar.com',
+    'ivao-radar.com',
     'wfhub.local',
     'oav.gr',
 ];

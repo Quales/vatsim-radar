@@ -14,7 +14,7 @@ export default defineEventHandler(async event => {
 
     const photo = await $fetch<{ photos: PlaneSpottersPhoto[] }>(`https://api.planespotters.net/pub/photos/reg/${ reg }`, {
         headers: {
-            'User-Agent': 'VatsimRadar/2.0 (dan@vatsim-radar.com)',
+            'User-Agent': 'VatsimRadar/2.0 (dan@ivao-radar.com)',
         },
     }).catch(() => null);
 
