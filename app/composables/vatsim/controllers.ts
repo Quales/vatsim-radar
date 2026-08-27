@@ -358,8 +358,7 @@ export function getATIS(
         .map(x => x.trim())
         .filter(Boolean)
         // Delete ivao urls in atis (e.g ts-1.eu-west-2.ivao.aero/CYWG_APP)
-        .filter(x => !/^[\w.-]+\.ivao\.aero\/[\w-]+$/i.test(x))
-        ?? null;
+        .filter(x => !/^[\w.-]+\.ivao\.aero\/[\w-]+$/i.test(x)) ?? null;
 
     if (atis && parseLinks) {
         atis = addATISLinks(atis);
