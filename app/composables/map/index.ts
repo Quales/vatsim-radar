@@ -132,7 +132,7 @@ export const useHeaderMenu = () => computed<HeaderItem[]>(() => {
                 {
                     text: 'Github',
                     action: () => {
-                        return window.open('https://github.com/VATSIM-Radar/vatsim-radar');
+                        return window.open('https://github.com/Quales/vatsim-radar');
                     },
                 },
                 {

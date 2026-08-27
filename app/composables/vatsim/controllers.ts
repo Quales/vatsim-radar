@@ -278,58 +278,13 @@ export async function showAtcOnMap(atc: VatsimShortenedController, map: Map | nu
 }
 
 const allowedDomains = [
-    'vats.im',
+    'ivao.aero',
+    'ivao-radar.com',
     'discord.gg',
-    'vatsca.org',
-    'vatger.de',
-    'vatsim-radar.com',
-    'uuwv.ru',
-    'vatmap.ru',
-    'vatrus.info',
-    'vatsim-scandinavia.org',
-    'vatcar.net',
-    'beluxvacc.org',
-    'portugal-vacc.org',
-    'vathk.com',
     'hq.vat-sea.com',
     'chartfox.org',
-    'vatsim.uk',
-    'vatsim.fr',
-    'vatadria.com',
-    'rovacc.ro',
-    'idvacc.id',
-    'zjxartcc.org',
     'twitch.tv',
     'map.vatsim.net',
-    'vatusa.net',
-    'zabartcc.org',
-    'zanartcc.org',
-    'ztlartcc.org',
-    'bvartcc.com',
-    'zauartcc.org',
-    'clevelandcenter.org',
-    'zdvartcc.org',
-    'zfwartcc.net',
-    'houston.center',
-    'flyindycenter.com',
-    'zkcartcc.org',
-    'laartcc.org',
-    'memphisartcc.com',
-    'zmaartcc.net',
-    'minniecenter.org',
-    'nyartcc.org',
-    'oakartcc.org',
-    'zlcartcc.org',
-    'zseartcc.org',
-    'vzdc.org',
-    'nyartcc.org',
-    'indiavacc.org',
-    'vat-sea.com',
-    'vatglasses.uk',
-    'bgvacc.org',
-    'vatsim.me',
-    'nyart.cc',
-    'vatsim-petersburg.com',
 ];
 
 function addATISLinks(lines: string[]) {
@@ -394,17 +349,16 @@ export function getATIS(
     parseLinks = true,
 ) {
     let atis = controller.text_atis
-            ?.filter(x => x.trim())
-            .map(x => parseEncoding(
-                x.replace(/<\/?[^>]+>/g, ''),
-                controller.callsign,
-            ))
-            .flatMap(x => x.split(/\/\/|\|\|/))
-            .map(x => x.trim())
-            .filter(Boolean)
-            // Supprime les lignes du type :
-            // ts-1.eu-west-2.ivao.aero/CYWG_APP
-            .filter(x => !/^[\w.-]+\.ivao\.aero\/[\w-]+$/i.test(x))
+        ?.filter(x => x.trim())
+        .map(x => parseEncoding(
+            x.replace(/<\/?[^>]+>/g, ''),
+            controller.callsign,
+        ))
+        .flatMap(x => x.split(/\/\/|\|\||\\\//))
+        .map(x => x.trim())
+        .filter(Boolean)
+        // Delete ivao urls in atis (e.g ts-1.eu-west-2.ivao.aero/CYWG_APP)
+        .filter(x => !/^[\w.-]+\.ivao\.aero\/[\w-]+$/i.test(x))
         ?? null;
 
     if (atis && parseLinks) {

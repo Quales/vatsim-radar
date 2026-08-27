@@ -37,7 +37,7 @@ Controller duplication should be used to duplicate APP, or highlight areas outsi
 used for promo of ARTCC position - such usages will not be accepted to dataset. 
 
 Common ATC duplicating rules can be found or edited
-here: https://github.com/VATSIM-Radar/vatsim-radar/blob/next/app/utils/server/vatsim/atc-duplicating.ts
+here: https://github.com/Quales/vatsim-radar/blob/next/app/utils/server/vatsim/atc-duplicating.ts
 
 ## ZMA Ocean Area
 

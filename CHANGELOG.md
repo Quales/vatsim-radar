@@ -477,7 +477,7 @@ This release is focused on a small bug fixes and improvements, including Navigra
 - Added apron names for Navigraph Layouts
 - Deicing pads are now less bright in Navigraph Layouts
 - Fixed an issue when distance flown was bigger than intended, leading
-  to [funny bugs](https://github.com/VATSIM-Radar/vatsim-radar/issues/1309) in edge cases
+  to [funny bugs](https://github.com/Quales/vatsim-radar/issues/1309) in edge cases
 - Distance tool layer will now have priority over route line
 - Fixed "infinite" Navigraph Data updating once and for all
 - Added missing support for _TWR sectors showing their sector, if defined on SimAware TRACON project (new sectors are

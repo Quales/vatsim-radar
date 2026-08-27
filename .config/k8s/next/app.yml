@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: app-next
-          image: ghcr.io/vatsim-radar/vatsim-radar/next
+          image: ghcr.io/quales/vatsim-radar/dev
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -75,7 +75,7 @@ spec:
         doks.digitalocean.com/node-pool: main
       containers:
         - name: worker
-          image: ghcr.io/vatsim-radar/vatsim-radar/next
+          image: ghcr.io/quales/vatsim-radar/dev
           imagePullPolicy: Always
           command: ["/radar/.config/worker-prod.sh"]
           ports:

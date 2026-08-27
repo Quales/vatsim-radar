@@ -18,7 +18,7 @@ Is your question not listed here? Ask in the [IVAO Radar Discord server!](https:
 <br>
 
 #### How do I report an issue or suggestion?
-- By [opening a new issue](https://github.com/VATSIM-Radar/vatsim-radar/issues/new/choose) on our Github
+- By [opening a new issue](https://github.com/Quales/vatsim-radar/issues/new/choose) on our Github
 
 <br>
 

@@ -4,7 +4,7 @@
             <ui-notification type="info">
                 All considering issues are available on <a
                     class="__link"
-                    href="https://github.com/VATSIM-Radar/vatsim-radar/issues"
+                    href="https://github.com/Quales/vatsim-radar/issues"
                     target="_blank"
                 >Github</a>
             </ui-notification>

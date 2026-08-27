@@ -148,7 +148,6 @@ import UiChip from '~/components/ui/text/UiChip.vue';
 import UiSeparator from '~/components/ui/data/UiSeparator.vue';
 import UiText from '~/components/ui/text/UiText.vue';
 import { makeBookingTime } from '~/composables/vatsim/bookings';
-import SpeakerIcon from '~/assets/icons/basic/speaker.svg?component';
 
 const props = defineProps({
     controller: {
@@ -190,7 +189,6 @@ const mapStore = useMapStore();
 const { copy, copyState } = useCopyText();
 const copiedFor = ref('');
 const bookingsLocalTimezone = useSettingValueFromFunc('appearance.bookingsLocalTimezone');
-const showSpeaker = useSettingValueFromFunc('map.preferences.airports.voiceButton');
 
 const additionalFrequencies = computed(() => {
     return props.controller.frequencies?.filter(x => {

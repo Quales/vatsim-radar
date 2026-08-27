@@ -38,7 +38,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/vatsim-radar/vatsim-radar/next:latest
+          tags: ghcr.io/Quales/vatsim-radar/next:latest
           context: .
           push: true
           file: .config/Dockerfile
@@ -63,7 +63,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/vatsim-radar/vatsim-radar/next-prebuilt:latest
+          tags: ghcr.io/vatsim-radar/quales/next-prebuilt:latest
           context: .
           push: true
           file: .config/debug.Dockerfile
