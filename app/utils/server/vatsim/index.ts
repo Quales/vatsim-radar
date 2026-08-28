@@ -53,6 +53,20 @@ export interface VatsimUser {
         name_last: string;
         name_full: string;
     };
+    rating: {
+        isPilot: boolean;
+        isAtc: boolean;
+        pilotRating:{
+            id: string;
+            name: string;
+            shortName: string;
+        };
+        atcRating:{
+            id: string;
+            name: string;
+            shortName: string;
+        };
+    }
     oauth: {
         token_valid: 'true' | 'false';
     };

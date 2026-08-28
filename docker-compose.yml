@@ -105,3 +105,16 @@ services:
         volumes:
             - ./.config/redis.conf:/usr/local/etc/redis/redis.conf
             - ./.config/redis:/data
+
+    questdb:
+        image: questdb/questdb:9.4.3
+        container_name: vatsim-radar-questdb
+        ports:
+            - '9000:9000'
+        environment:
+            - QDB_LOG_W_STDOUT_LEVEL=ERROR
+            - QDB_SHARED_WORKER_COUNT=1
+        volumes:
+            - ./.config/questdb:/var/lib/questdb
+        extra_hosts:
+            - "host.docker.internal:host-gateway"

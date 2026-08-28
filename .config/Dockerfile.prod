@@ -1,0 +1,36 @@
+FROM node:26-slim
+WORKDIR /radar
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    default-mysql-client \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install yarn globally
+RUN npm i -g yarn
+
+# Copy dependency files first (for better caching)
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn/
+
+# Install dependencies
+RUN yarn install --immutable
+
+# Copy rest of the code
+COPY . /radar
+
+# Create a temporary .env for build-time Prisma generation
+RUN echo "DATABASE_URL=mysql://root:localhost@localhost:3306/radar?schema=public" > /radar/.env
+
+# Generate Prisma client and build
+RUN yarn prepare && \
+    npx prisma generate && \
+    yarn build
+
+# Remove temporary .env (production will mount its own)
+RUN rm /radar/.env
+
+EXPOSE 3000
+
+CMD ["sh", "-c", "npx prisma migrate deploy && export $(grep -v '^#' /radar/.env | xargs) && node /radar/.output/server/index.mjs"]
