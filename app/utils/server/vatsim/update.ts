@@ -70,7 +70,7 @@ export function updateVatsimDataStorage() {
 
     const positions = useFacilitiesIds();
 
-    const observers: VatsimController[] = [];
+    const observers: VatsimController[] = data.observers ?? [];
 
     data.controllers = data.controllers.filter(controller => {
         if (controller.facility === positions.OBS) {

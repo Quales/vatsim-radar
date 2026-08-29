@@ -64,7 +64,7 @@ The app has three main runtime layers:
    - Redis synchronization in `app/utils/server/redis.ts` and `server/plugins/vatsim.ts`.
    - Cron/data jobs in `app/utils/server/tasks.ts` and `server/plugins/cron.ts`.
    - Network-data normalization in `app/utils/server/worker/ivao-bridge.ts` (IVAO -> internal VATSIM-shaped payload), with worker fetches combining whazzup + `/v2/tracker/now/pilots/summary` + `/v2/tracker/now/atc/summary`.
-     - When summary endpoints are available, summary pilot/ATC rows are enriched from whazzup by `id`, `userId`, then `callsign` so fields like `createdAt`/`rating` are preserved for downstream `logon_time` and controller rating mapping.
+     - When summary endpoints are available, summary pilot/ATC rows are enriched from whazzup by `id`, `userId`, then `callsign` so fields like `createdAt`/`rating` are preserved for downstream `logon_time` and controller rating mapping. Pilot `flightPlan` also merges with whazzup so `route`/`remarks` survive sparse summary payloads.
    - VATSIM-specific data enrichment in `app/utils/server/vatsim/*`.
 
 PWA and browser-cache behavior:

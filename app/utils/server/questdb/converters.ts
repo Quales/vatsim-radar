@@ -31,6 +31,7 @@ export type QuestDBGeojsonFeature = QuestDBGeojsonFeatureCollection['features'][
 
 export type QuestDBGeojson = {
     flightPlan?: string;
+    remarks?: string;
     flightPlanTime?: string;
     departedAt?: string | null;
     arrivedAt?: string | null;

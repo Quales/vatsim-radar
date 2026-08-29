@@ -24,5 +24,6 @@ export default defineEventHandler(async event => {
 
     return {
         flightPlan: pilot.flight_plan?.route,
+        remarks: pilot.flight_plan?.remarks,
     };
 });

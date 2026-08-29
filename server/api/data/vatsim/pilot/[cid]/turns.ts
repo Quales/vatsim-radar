@@ -37,11 +37,13 @@ export default defineEventHandler(async (event): Promise<QuestDBGeojson | null |
             if (geojson) {
                 return Object.assign(geojson, {
                     flightPlan: pilot.flight_plan?.route,
+                    remarks: pilot.flight_plan?.remarks,
                 });
             }
             else if (pilot.flight_plan?.route) {
                 return {
                     flightPlan: pilot.flight_plan?.route,
+                    remarks: pilot.flight_plan?.remarks,
                 };
             }
 
@@ -58,6 +60,7 @@ export default defineEventHandler(async (event): Promise<QuestDBGeojson | null |
 
             return {
                 flightPlan: pilot.flight_plan?.route,
+                remarks: pilot.flight_plan?.remarks,
             };
         }
     }

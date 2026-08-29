@@ -225,7 +225,7 @@ export default defineNuxtConfig({
         },
         routeRules: {
             '/discord': {
-                redirect: 'https://discord.gg/MtFKhMPePe',
+                redirect: 'https://discord.gg/AC8tfGYTeF',
             },
             '/vg': {
                 redirect: `${ process.env.DOMAIN }/?vg=1`,

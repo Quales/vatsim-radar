@@ -269,6 +269,22 @@ function buildConnectionLookup(entries: IVAOConnection[]) {
     return { byId, byUserId, byCallsign };
 }
 
+function mergeFlightPlan(summaryFlightPlanUnknown: unknown, whazzupFlightPlanUnknown: unknown): IVAOConnection | undefined {
+    const summaryFlightPlan = readRecord(summaryFlightPlanUnknown);
+    const whazzupFlightPlan = readRecord(whazzupFlightPlanUnknown);
+    if (!Object.keys(summaryFlightPlan).length && !Object.keys(whazzupFlightPlan).length) return;
+
+    const mergedFlightPlan: IVAOConnection = {
+        ...whazzupFlightPlan,
+        ...summaryFlightPlan,
+    };
+
+    mergedFlightPlan.route = readString(summaryFlightPlan.route) ?? readString(whazzupFlightPlan.route);
+    mergedFlightPlan.remarks = readString(summaryFlightPlan.remarks) ?? readString(whazzupFlightPlan.remarks);
+
+    return mergedFlightPlan;
+}
+
 function enrichFromWhazzup(entry: IVAOConnection, whazzupLookup: ReturnType<typeof buildConnectionLookup>): IVAOConnection {
     const id = getConnectionLookupValue(entry, 'id');
     const userId = getConnectionLookupValue(entry, 'userId');
@@ -280,10 +296,17 @@ function enrichFromWhazzup(entry: IVAOConnection, whazzupLookup: ReturnType<type
 
     if (!match) return entry;
 
-    return {
+    const merged = {
         ...match,
         ...entry,
     };
+
+    const mergedFlightPlan = mergeFlightPlan(entry.flightPlan, match.flightPlan);
+    if (mergedFlightPlan) {
+        merged.flightPlan = mergedFlightPlan;
+    }
+
+    return merged;
 }
 
 export function convertIvaoDataToVatsimData(payload: unknown, summaries?: IVAOSummaryPayload): VatsimData {
