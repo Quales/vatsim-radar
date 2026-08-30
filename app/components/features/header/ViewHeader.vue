@@ -159,7 +159,7 @@
                         Login
                     </template>
                     <template v-else>
-                        Connect VATSIM
+                        Connect IVAO
                     </template>
                 </ui-button>
                 <div

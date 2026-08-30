@@ -1,16 +1,16 @@
 import { prisma } from '~/utils/server/prisma';
 import { handleH3Exception } from '~/utils/server/h3';
 import { createDBUser, getDBUserToken } from '~/utils/db/user';
-import {vatsimAuthOrRefresh, vatsimGetUser, VatsimUser} from '~/utils/server/vatsim';
+import { vatsimAuthOrRefresh, vatsimGetUser } from '~/utils/server/vatsim';
+import type { VatsimUser } from '~/utils/server/vatsim';
 import { findUserByCookie } from '~/utils/server/user';
 import { discordClient } from '~~/server/plugins/discord';
-import { GuildMember, PermissionFlagsBits} from 'discord.js';
+import type { GuildMember } from 'discord.js';
+import { PermissionFlagsBits } from 'discord.js';
 import { getDiscordName } from '~/utils/server/discord';
 import { getRedirectURL } from '~/utils/server';
 
 export default defineEventHandler(async event => {
-
-
     async function giveUserRoles(config: any, user: GuildMember, vatsimUser: VatsimUser) {
         const ratings: Record<string, string | undefined> = {
             AS1: config.DISCORD_ROLE_ATC_AS1,
@@ -35,11 +35,9 @@ export default defineEventHandler(async event => {
         };
 
         if (vatsimUser.rating.isAtc) {
-            console.log("atc rating", vatsimUser.rating.atcRating.shortName, ratings[vatsimUser.rating.atcRating.shortName])
             const roleId = ratings[vatsimUser.rating.atcRating.shortName];
             if (roleId) {
                 await user.roles.add(roleId);
-            } else {
             }
         }
 
@@ -47,7 +45,6 @@ export default defineEventHandler(async event => {
             const roleId2 = ratings[vatsimUser.rating.pilotRating.shortName];
             if (roleId2) {
                 await user.roles.add(roleId2);
-            } else {
             }
         }
     }
@@ -114,7 +111,6 @@ export default defineEventHandler(async event => {
                 await giveUserRoles(config, user, vatsimUser);
                 if (!user.permissions.has(PermissionFlagsBits.Administrator)) {
                     await user.setNickname(getDiscordName(discordStrategy, vatsimUser.cid, vatsimUser.personal.name_full), 'Verification process');
-
                 }
                 else {
                     console.log(getDiscordName(discordStrategy, vatsimUser.cid, vatsimUser.personal.name_full));

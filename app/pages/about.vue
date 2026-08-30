@@ -10,10 +10,7 @@
                 About <span>IVAO Radar</span>
             </div>
             <div class="about_hero_text">
-                IVAO Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
-            </div>
-            <div class="about_hero_subtext">
-                IVAO Radar Beta was opened to the public on <span>17 April 2024</span>. That is the same day that Sean Bean turned 66. Coincidence? We think not.
+              IVAO Radar is a code replica of VATSIM Radar, fully adapted for IVAO. It's a feature-rich flight tracking tool designed to enhance your flying or controlling experience!
             </div>
             <div class="about_hero_info">
                 <div class="about_hero_info_item">
@@ -29,7 +26,7 @@
                         Contact
                     </div>
                     <div class="about_hero_info_item_text">
-                        <a href="mailto:dan@ivao-radar.com">dan@ivao-radar.com</a>
+                        <a href="mailto:arthur@ivao-radar.com">arthur@ivao-radar.com</a>
                     </div>
                 </div>
             </div>

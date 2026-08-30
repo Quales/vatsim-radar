@@ -2,7 +2,7 @@
 
 ## What is IVAO Radar?
 
-IVAO Radar is the go-to VATSIM Flight Tracker. It is a feature-rich tool that supports your flying or controlling experience!
+IVAO Radar is a code replica of VATSIM Radar, fully adapted for IVAO. It's a feature-rich flight tracking tool designed to enhance your flying or controlling experience!
 
 ## When was it created?
 
@@ -25,7 +25,7 @@ Donators get access to Early-Access branches, dedicated Discord channels to disc
 
 ## How to contact the development team?
 
-Don't be a stranger; [Email us!](mailto:dan@ivao-radar.com)
+Don't be a stranger; [Email us!](mailto:arthur@ivao-radar.com)
 
 ## How to contribute to IVAO Radar?
 

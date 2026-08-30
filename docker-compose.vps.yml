@@ -1,29 +1,31 @@
-networks:
-    ivao-radar-net:
-        driver: bridge
-        internal: true
+version: '3.8'
 
 services:
     frontend:
         build:
             context: .
-            dockerfile: .config/dev.Dockerfile
-        image: vr-1.1.1
-        env_file:
-            - ./.env
-        container_name: vatsim-radar
-        expose:
-            - 8180
-            - 9229
-        command: /radar/.config/command.sh
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt
+        command: /bin/sh -c "/radar/.config/command-prod.sh"
         restart: unless-stopped
+        environment:
+            - NODE_ENV=production
+            - NUXT_ENV=production
+            - NITRO_ENV=production
+            - NITRO_DEBUG=false
+            - NUXT_PUBLIC_DEBUG=false
+            - NITRO_PUBLIC_DEBUG=false
+            - NUXT_PUBLIC_DEVTOOLS=false
+            - NITRO_EXPERIMENTAL_NO_SCRIPTS=true
+            - NITRO_EXPERIMENTAL_NO_VUE_DEVTOOLS=true
         ports:
-            - "127.0.0.1:8180:8080"
-            - "127.0.0.1:9229:9229"
+            - "127.0.0.1:52675:3000"
+            - "100.90.196.2:52675:3000"
         volumes:
             - ".:/radar:rw"
         healthcheck:
-            test: "bash -c 'echo -n > /dev/tcp/127.0.0.1/8180'"
+            test: "bash -c 'echo -n > /dev/tcp/127.0.0.1/3000'"
             interval: 1s
             retries: 360
         depends_on:
@@ -31,8 +33,8 @@ services:
                 condition: service_healthy
             redis:
                 condition: service_started
-        networks:
-            - ivao-radar-net
+            questdb:
+                condition: service_started
         extra_hosts:
             - "host.docker.internal:host-gateway"
 
@@ -40,14 +42,21 @@ services:
         restart: unless-stopped
         build:
             context: .
-            dockerfile: .config/dev.Dockerfile
-        image: vr-1.1.1
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt-worker
         env_file:
             - ./.env
-        container_name: vatsim-radar-worker
-        command: /radar/.config/worker.sh
+        ports:
+            - '127.0.0.1:8880:8880'
+            - '100.90.196.2:8880:8880'
+        command: /radar/.config/worker-prod.sh
         volumes:
             - ".:/radar:rw"
+        environment:
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - REDIS_PASSWORD=RADAR
         depends_on:
             db:
                 condition: service_healthy
@@ -55,8 +64,8 @@ services:
                 condition: service_started
             frontend:
                 condition: service_healthy
-        networks:
-            - ivao-radar-net
+            questdb:
+                condition: service_started
         extra_hosts:
             - "host.docker.internal:host-gateway"
 
@@ -64,12 +73,13 @@ services:
         restart: unless-stopped
         build:
             context: .
-            dockerfile: .config/dev.Dockerfile
-        image: vr-1.1.1
-        env_file:
-            - ./.env
-        container_name: vatsim-radar-navigraph
-        command: /radar/.config/navigraph.sh
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt-navigraph
+        ports:
+            - '127.0.0.1:3000:3000'
+            - '100.90.196.2:3000:3000'
+        command: /radar/.config/navigraph-prod.sh
         volumes:
             - ".:/radar:rw"
         depends_on:
@@ -79,34 +89,35 @@ services:
                 condition: service_started
             frontend:
                 condition: service_healthy
-        networks:
-            - ivao-radar-net
         extra_hosts:
             - "host.docker.internal:host-gateway"
 
     db:
         image: mysql
+        container_name: vatsim-radar-prebuilt-db
         cap_add:
             - SYS_NICE
-        container_name: vatsim-radar-db
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
             - MYSQL_DATABASE=radar
             - MYSQL_ROOT_PASSWORD=localhost
+        ports:
+            - '127.0.0.1:3307:3306'
+            - '100.90.196.2:3307:3306'
         healthcheck:
-            test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+            test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
             timeout: 5s
             interval: 5s
             retries: 40
         volumes:
-            - .config/db:/var/lib/mysql
-        networks:
-            - ivao-radar-net
+            - ./.config/db:/var/lib/mysql
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
 
     redis:
         image: redis
-        container_name: vatsim-radar-redis
-        command: redis-server /usr/local/etc/redis/redis.conf --requirepass RADAR
+        container_name: vatsim-radar-prebuilt-redis
+        command: redis-server /usr/local/etc/redis/redis.conf --requirepass RADAR --bind 0.0.0.0
         expose:
             - 6379
         environment:
@@ -114,8 +125,8 @@ services:
         volumes:
             - ./.config/redis.conf:/usr/local/etc/redis/redis.conf
             - ./.config/redis:/data
-        networks:
-            - ivao-radar-net
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
 
     questdb:
         image: questdb/questdb:9.4.3
@@ -123,9 +134,16 @@ services:
         environment:
             - QDB_LOG_W_STDOUT_LEVEL=ERROR
             - QDB_SHARED_WORKER_COUNT=1
+        ports:
+            - "127.0.0.1:9000:9000"
+            - "127.0.0.1:9009:9009"
+            - "127.0.0.1:8812:8812"
+            - "127.0.0.1:9003:9003"
+            - "100.90.196.2:9000:9000"
+            - "100.90.196.2:9009:9009"
+            - "100.90.196.2:8812:8812"
+            - "100.90.196.2:9003:9003"
         volumes:
             - ./.config/questdb:/var/lib/questdb
-        networks:
-            - ivao-radar-net
         extra_hosts:
             - "host.docker.internal:host-gateway"

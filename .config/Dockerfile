@@ -15,6 +15,7 @@ RUN npm i -g yarn
 RUN yarn
 
 COPY . /radar
+RUN if [ -f ".env.build" ]; then cp .env.build .env; fi
 RUN ls -la
 RUN yarn prepare
 RUN npx prisma generate

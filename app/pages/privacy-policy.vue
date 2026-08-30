@@ -16,9 +16,9 @@
                 </div>
                 <a
                     class="privacy-policy_hero_contact_link"
-                    href="mailto:dan@ivao-radar.com"
+                    href="mailto:arthur@ivao-radar.com"
                 >
-                    dan@ivao-radar.com
+                    arthur@ivao-radar.com
                 </a>
             </div>
         </div>
@@ -53,26 +53,26 @@
                         <div class="privacy-policy_section_title">Persistent stored data</div>
                         <ol>
                             <li>
-                                <span>IVAO Radar</span> may store your data in persistent DataBase after linking of VATSIM, Navigraph, and other accounts, listed below in clause 2.2.
+                                <span>IVAO Radar</span> may store your data in persistent DataBase after linking of IVAO, Navigraph, and other accounts, listed below in clause 2.2.
                             </li>
                             <li>
                                 Personal data, stored by <span>IVAO Radar</span>, includes:
 
                                 <ol>
                                     <li>
-                                        <span>VATSIM</span> user info: account token, ID and full name
+                                        <span>IVAO</span> user info: account token, ID and full name
                                     </li>
                                     <li>
                                         <span>Navigraph</span> user info: account token, ID and Navigraph subscription status
                                     </li>
                                     <li>
-                                        <span>Discord</span> user info: ID and relation with VATSIM account
+                                        <span>Discord</span> user info: ID and relation with IVAO account
                                     </li>
                                     <li>
-                                        <span>Patreon</span> user info: ID, nickname and relation with VATSIM account
+                                        <span>Patreon</span> user info: ID, nickname and relation with IVAO account
                                     </li>
                                     <li>
-                                        <span>Twitch</span> user info: ID, nickname and relation with VATSIM account
+                                        <span>Twitch</span> user info: ID, nickname and relation with IVAO account
                                     </li>
                                     <li>
                                         User's preferences, including, but not limited to, Settings, Favorite users, Filters,

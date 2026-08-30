@@ -5,6 +5,7 @@ COPY package.json package.json
 COPY yarn.lock yarn.lock
 COPY .yarn /radar/.yarn/
 COPY .yarnrc.yml .yarnrc.yml
+COPY .env.build .env
 
 ENV NODE_ENV=production
 ENV VR_DEBUG=1
@@ -16,6 +17,7 @@ RUN npm i -g yarn
 RUN yarn
 
 COPY . /radar
+RUN ls -la
 RUN yarn prepare
 RUN npx prisma generate
 RUN yarn build

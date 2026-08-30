@@ -33,7 +33,7 @@ spec:
         doks.digitalocean.com/node-pool: main
       containers:
         - name: navigraph
-          image: ghcr.io/Quales/vatsim-radar/production
+          image: ghcr.io/quales/vatsim-radar/production
           imagePullPolicy: Always
           command: ["/radar/.config/navigraph-prod.sh"]
           ports:

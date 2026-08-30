@@ -33,11 +33,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Add .env file
-        run: echo "${{ secrets.ENV }}" > .env
+        run: echo "DATABASE_URL=mysql://root:localhost@db:3306/radar?schema=public" > .env
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/Quales/vatsim-radar/production:latest
+          tags: ghcr.io/quales/vatsim-radar/production:latest
           context: .
           push: true
           file: .config/Dockerfile
@@ -62,7 +62,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/Quales/vatsim-radar/production-prebuilt:latest
+          tags: ghcr.io/quales/vatsim-radar/production-prebuilt:latest
           context: .
           push: true
           file: .config/debug.Dockerfile

@@ -1,9 +1,9 @@
 services:
     frontend:
-        image: ghcr.io/Quales/vatsim-radar/production-prebuilt:latest
+        image: ghcr.io/quales/vatsim-radar/production-prebuilt:latest
 
     worker:
-        image: ghcr.io/Quales/vatsim-radar/production-prebuilt:latest
+        image: ghcr.io/quales/vatsim-radar/production-prebuilt:latest
 
     navigraph:
-        image: ghcr.io/Quales/vatsim-radar/production-prebuilt:latest
+        image: ghcr.io/quales/vatsim-radar/production-prebuilt:latest
