@@ -16,8 +16,8 @@ export function vatsimAuthOrRefresh(code: string, type: 'auth' | 'refresh') {
 
     const settings: Record<string, any> = {
         grant_type: type === 'refresh' ? 'refresh_token' : 'authorization_code',
-        client_id: config.VATSIM_CLIENT_ID,
-        client_secret: config.VATSIM_CLIENT_SECRET,
+        client_id: config.IVAO_CLIENT_ID,
+        client_secret: config.IVAO_CLIENT_SECRET,
         redirect_uri: getVatsimRedirectUri(),
         scope: ['profile', 'discord'],
     };

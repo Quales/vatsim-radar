@@ -1,5 +1,18 @@
 # Changelog
 
+# [2.0.1-0.1]
+
+## Highlights
+
+- Changed data source from VATSIM to IVAO
+
+## Features and Improvements
+
+- Updated data source from VATSIM to IVAO
+- Changed authentication to work with IVAO
+- Changed ratings to IVAO ratings
+- Removed some VATSIM specific data
+
 # [2.0.1-final]
 
 ## Highlights

@@ -142,15 +142,15 @@ async function vatsimTasks() {
     await defineCronJob('*/10 * * * *', updateBookings).catch(console.error);
     await defineCronJob('*/10 * * * *', updateNattrak).catch(console.error);
     await defineCronJob('20 0 * * *', async () => {
-        if (!process.env.VATSIM_VOICE_USERNAME || !process.env.VATSIM_VOICE_PASSWORD) return;
+        if (!process.env.IVAO_VOICE_USERNAME || !process.env.IVAO_VOICE_PASSWORD) return;
 
         const vatsimVoiceAuth = await $fetch<string>('https://voice1.vatsim.net/api/v1/auth', {
             responseType: 'json',
             method: 'POST',
             body: {
-                client: process.env.VATSIM_VOICE_USERNAME,
-                username: process.env.VATSIM_VOICE_USERNAME,
-                password: process.env.VATSIM_VOICE_PASSWORD,
+                client: process.env.IVAO_VOICE_USERNAME,
+                username: process.env.IVAO_VOICE_USERNAME,
+                password: process.env.IVAO_VOICE_PASSWORD,
             },
         });
 

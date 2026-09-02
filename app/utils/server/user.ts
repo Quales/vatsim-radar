@@ -112,7 +112,7 @@ export async function getAllPrivateUsers(): Promise<Record<string, boolean | str
 
     if (isNext()) {
         const privacy = await $fetch<Record<string, boolean | string>>(`https://ivao-radar.com/api/user/lists/privacy`, {
-            headers: { authorization: `Bearer ${ process.env.VATSIM_IDENT_TOKEN }` },
+            headers: { authorization: `Bearer ${ process.env.IVAO_IDENT_TOKEN }` },
         }).catch(() => ({} as Record<string, boolean | string>));
         for (const user in privacy) {
             object[user] ??= privacy[user];

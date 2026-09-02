@@ -1,4 +1,4 @@
-### 🔗 Your VATSIM ID
+### 🔗 Your IVAO ID
 
 <!-- Please specify your CID -->
 

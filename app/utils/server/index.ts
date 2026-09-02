@@ -28,12 +28,12 @@ export function defineCronJob(pattern: string, func: () => any, options?: CronOp
 let firstLog = false;
 
 export function getVATSIMIdentHeaders(): Record<string, string> {
-    const token = process.env.VATSIM_IDENT_TOKEN;
+    const token = process.env.IVAO_IDENT_TOKEN;
 
     if (!token) {
         if (!firstLog) {
             firstLog = true;
-            console.log('VATSIM_IDENT_TOKEN is missing');
+            console.log('IVAO_IDENT_TOKEN is missing');
         }
 
         return {};
@@ -41,7 +41,7 @@ export function getVATSIMIdentHeaders(): Record<string, string> {
 
     if (!firstLog) {
         firstLog = true;
-        console.log('VATSIM_IDENT_TOKEN is present');
+        console.log('IVAO_IDENT_TOKEN is present');
     }
 
     return {
