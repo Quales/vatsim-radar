@@ -25,9 +25,11 @@ services:
         volumes:
             - ".:/radar:rw"
         healthcheck:
-            test: "bash -c 'echo -n > /dev/tcp/127.0.0.1/3000'"
-            interval: 1s
-            retries: 360
+            test: [ "CMD", "curl", "-f", "http://localhost:3000/health" ]
+            interval: 5s
+            timeout: 2s
+            retries: 3
+            start_period: 30s
         depends_on:
             db:
                 condition: service_healthy
