@@ -98,6 +98,8 @@ services:
     redis:
         image: redis
         command: redis-server /usr/local/etc/redis/redis.conf --requirepass RADAR
+        ports:
+            - '127.0.0.1:6379:6379'
         expose:
             - 6379
         environment:

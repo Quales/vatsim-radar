@@ -107,12 +107,12 @@ export async function updateVatglassesDynamic() {
 async function vatsimTasks() {
     async function fetchDivisions() {
         const [divisions, subdivisions] = await Promise.all([
-            $fetch<VatsimDivision[]>('https://api.vatsim.net/api/divisions/', {
+            $fetch<VatsimDivision[]>('https://api.ivao.aero/v2/divisions/all', {
                 timeout: 1000 * 60,
                 retry: 5,
                 headers: getVATSIMIdentHeaders(),
             }),
-            $fetch<VatsimSubDivision[]>('https://api.vatsim.net/api/subdivisions/', {
+            $fetch<VatsimSubDivision[]>('https://api.ivao.aero/v2/divisions/all', {
                 timeout: 1000 * 60,
                 retry: 5,
                 headers: getVATSIMIdentHeaders(),
@@ -120,7 +120,7 @@ async function vatsimTasks() {
         ]);
 
         setRedisData('data-divisions', divisions, 1000 * 60 * 60 * 24);
-        setRedisData('data-subdivisions', subdivisions, 1000 * 60 * 60 * 24);
+        // setRedisData('data-subdivisions', subdivisions, 1000 * 60 * 60 * 24);
     }
 
     await defineCronJob('30 * * * *', async () => {

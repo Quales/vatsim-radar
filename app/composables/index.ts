@@ -381,7 +381,10 @@ export const cookiePolicyStatus = () => {
     });
 };
 
-export const useIsDebug = () => import.meta.dev || !!useRuntimeConfig().public.VR_DEBUG;
+export const useIsDebug = () => {
+    const debugFlag = String(useRuntimeConfig().public.VR_DEBUG).toLowerCase();
+    return import.meta.dev || debugFlag === '1' || debugFlag === 'true';
+};
 
 export const geoJson = new GeoJSON({
     featureProjection: 'EPSG:4326',

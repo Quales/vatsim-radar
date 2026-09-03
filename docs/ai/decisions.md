@@ -18,6 +18,10 @@ This is the registry of non-obvious behavioral invariants and intentional tradeo
 
 - The Vite client build in `nuxt.config.ts` targets `safari15` so production JavaScript remains parseable by iOS 15 Safari. Keep this target when changing client build settings; runtime API polyfills are a separate concern.
 
+## Runtime Flags And Debug Mode
+
+- Client debug mode in `app/composables/index.ts` must parse `runtimeConfig.public.VR_DEBUG` as an explicit string flag (`'1'` or `'true'`) instead of using truthiness. Environment values such as `'0'` are non-empty strings and would incorrectly enable debug behavior if coerced with `!!`.
+
 ## Client State And Filtering
 
 - Favorite-list filtering builds a per-data-pass CID `Set` from the raw selected lists and passes it into `filterUser`; do not introduce a long-lived cache for this path. `store.lists` should use short-lived per-getter maps for CID and shared-observer lookups instead of nested list scans.
@@ -82,6 +86,8 @@ This is the registry of non-obvious behavioral invariants and intentional tradeo
 ## Server Data And Storage
 
 - QuestDB replaces the previous time-series storage for pilot track analytics. Use `QUESTDB_TABLE_MAIN` for position/turn rows and `QUESTDB_TABLE_PLANS` for flight-plan snapshots because QuestDB uses tables for this split. Writes use the official `@questdb/nodejs-client` over HTTP ingestion by default; reads use the HTTP `/exec` SQL API.
+- IVAO booking ingestion must aggregate multiple UTC daily windows and dedupe by booking id before saving, because the source exposes one day per request while the map and bookings pages expect a multi-day lookahead.
+- IVAO booking fetches must send the `ApiKey` header from `IVAO_API_KEY`; keep the VATSIM ident header alongside it so the source requests continue to match the rest of the server fetches.
 - QuestDB infrastructure uses the official `questdb/questdb:9.4.3` image in Docker Compose and Kubernetes. Kubernetes resource names should use `questdb` rather than `influx-v3`; the PVC is `radar-questdb` mounted at `/var/lib/questdb`, and readiness should use QuestDB's health endpoint on port `9003`.
 - QuestDB container stdout logging is kept at `ERROR` through `QDB_LOG_W_STDOUT_LEVEL` so frequent `/exec` queries and WAL apply jobs do not flood Docker/Kubernetes logs. Small deployments also set `QDB_SHARED_WORKER_COUNT=1` to avoid QuestDB reserving extra worker threads for this narrow analytics workload.
 - The live data worker must normalize non-VATSIM feeds into the internal `VatsimData` contract before any downstream processing. Keep facility IDs/codes (`OBS/FSS/DEL/GND/TWR/APP/CTR`) stable in that bridge (`app/utils/server/worker/ivao-bridge.ts`), because `useFacilitiesIds()` and controller processing rely on those exact keys. For IVAO, prefer `now/pilots/summary` and `now/atc/summary` for pilot/ATC payloads, and keep whazzup as fallback/metadata source (especially observers).

@@ -494,17 +494,15 @@ export async function updateBookings() {
 
         const bookings = bookingData.map(booking => {
             const division = divisionCache[booking.division];
-            const subdivision = subDivisionCache[booking.subdivision];
             const atc = createAtcForBooking(booking);
-            const start = new Date(booking.start + 'Z').getTime();
-            const end = new Date(booking.end + 'Z').getTime();
+            const start = booking.start;
+            const end = booking.end;
 
             if (isNaN(start) || isNaN(end) || end - start < 0 || end - start > 1000 * 60 * 60 * 24 * 2) return null;
 
             return {
                 ...booking,
                 division: division,
-                subdivision: subdivision,
                 atc: atc,
                 start: start,
                 end: end,
@@ -520,13 +518,95 @@ export async function updateBookings() {
     }
 }
 
+const BOOKING_LOOKAHEAD_DAYS = 8;
+
+type IvaoBookingResponse = {
+    id: number;
+    startDate: string;
+    endDate: string;
+    training?: string | null;
+    atcPosition?: string | null;
+    subcenter?: string | null;
+    user?: {
+        id?: number | string | null;
+        divisionId?: string | null;
+    };
+    atcPositionRef?: {
+        composePosition?: string | null;
+    };
+    subcenterRef?: {
+        id?: string | null;
+    };
+};
+
+function getBookingFetchDate(offsetDays: number): string {
+    const date = new Date();
+    date.setUTCHours(0, 0, 0, 0);
+    date.setUTCDate(date.getUTCDate() + offsetDays);
+    return date.toISOString().slice(0, 10);
+}
+
+function mapIvaoBookingType(training?: string | null): VatsimBookingData['type'] {
+    switch (training?.toLowerCase()) {
+        case 'exam':
+            return 'exam';
+        case 'training':
+            return 'mentoring';
+        default:
+            return 'booking';
+    }
+}
+
+function normalizeIvaoBooking(booking: IvaoBookingResponse): VatsimBookingData | null {
+    const start = new Date(booking.startDate);
+    const end = new Date(booking.endDate);
+    const callsign = booking.atcPositionRef?.composePosition ?? booking.atcPosition ?? '';
+    const cid = typeof booking.user?.id === 'number' ? booking.user.id : Number(booking.user?.id);
+
+    if (!callsign || !Number.isFinite(cid) || isNaN(start.getTime()) || isNaN(end.getTime())) return null;
+
+    return {
+        id: booking.id,
+        callsign,
+        cid,
+        type: mapIvaoBookingType(booking.training),
+        start: start.getTime(),
+        end: end.getTime(),
+        division: booking.user?.divisionId ?? '',
+        subdivision: booking.subcenter ?? booking.subcenterRef?.id ?? '',
+    };
+}
+
 async function fetchBookingData(): Promise<VatsimBookingData[] | undefined> {
     try {
-        const response = await $fetch<VatsimBookingData[]>('https://atc-bookings.vatsim.net/api/booking', {
-            parseResponse: responseText => JSON.parse(responseText),
-            timeout: 1000 * 30,
-        });
-        return response;
+        const dailyBookings = await Promise.allSettled(
+            Array.from({ length: BOOKING_LOOKAHEAD_DAYS }, (_, offset) => getBookingFetchDate(offset))
+                .map(date => $fetch<IvaoBookingResponse[]>('https://api.ivao.aero/v2/atc/bookings/daily', {
+                    query: { date },
+                    headers: {
+                        ...getVATSIMIdentHeaders()
+                    },
+                    timeout: 1000 * 30,
+                })),
+        );
+
+        const bookingsById = new Map<number, VatsimBookingData>();
+
+        for (const [index, result] of dailyBookings.entries()) {
+            if (result.status === 'rejected') {
+                console.error(`Error fetching IVAO bookings for ${ getBookingFetchDate(index) }:`, result.reason);
+                continue;
+            }
+
+            for (const booking of result.value) {
+                const normalizedBooking = normalizeIvaoBooking(booking);
+                if (!normalizedBooking) continue;
+
+                bookingsById.set(normalizedBooking.id, normalizedBooking);
+            }
+        }
+
+        return Array.from(bookingsById.values()).sort((a, b) => a.start - b.start || a.end - b.end || a.id - b.id);
     }
     catch (e) {
         console.error(e);

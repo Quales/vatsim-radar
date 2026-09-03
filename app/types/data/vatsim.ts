@@ -187,7 +187,7 @@ export interface VatsimBookingData {
     start: number;
     end: number;
     division: string;
-    subdivision: string;
+    subdivision?: string;
 }
 
 export type VatsimShortenedData = {

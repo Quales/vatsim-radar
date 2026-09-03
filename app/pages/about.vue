@@ -10,7 +10,7 @@
                 About <span>IVAO Radar</span>
             </div>
             <div class="about_hero_text">
-              IVAO Radar is a code replica of VATSIM Radar, fully adapted for IVAO. It's a feature-rich flight tracking tool designed to enhance your flying or controlling experience!
+                IVAO Radar is a code replica of VATSIM Radar, fully adapted for IVAO. It's a feature-rich flight tracking tool designed to enhance your flying or controlling experience!
             </div>
             <div class="about_hero_info">
                 <div class="about_hero_info_item">

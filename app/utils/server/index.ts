@@ -29,6 +29,13 @@ let firstLog = false;
 
 export function getVATSIMIdentHeaders(): Record<string, string> {
     const token = process.env.IVAO_IDENT_TOKEN;
+    const apiKey = process.env.IVAO_API_KEY;
+
+    if (!!apiKey) {
+        return {
+            'ApiKey': apiKey
+        };
+    }
 
     if (!token) {
         if (!firstLog) {
@@ -45,6 +52,7 @@ export function getVATSIMIdentHeaders(): Record<string, string> {
     }
 
     return {
+        'ApiKey': apiKey ?? '',
         'User-Agent': token,
     };
 }
