@@ -60,12 +60,6 @@
 
                     <ui-button-group class="event-details__routes_route_actions">
                         <ui-button
-                            :href="encodeURI(`https://my.vatsim.net/pilots/flightplan?departure=${ route.departure }&arrival=${ route.arrival }&route=${ route.route }`)"
-                            target="_blank"
-                        >
-                            Prefile on VATSIM
-                        </ui-button>
-                        <ui-button
                             :href="encodeURI(`https://dispatch.simbrief.com/options/custom?orig=${ route.departure }&dest=${ route.arrival }&route=${ route.route }`)"
                             target="_blank"
                         >
@@ -142,7 +136,7 @@
         <p>More details:                 <a
             :href="props.event.link"
             target="_blank"
-        >on vatsim.net</a>
+        >here</a>
         </p>
     </div>
 </template>
