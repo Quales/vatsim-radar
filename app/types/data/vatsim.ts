@@ -350,6 +350,8 @@ export enum VatsimEventType {
     Event = 'Event',
     Exam = 'Controller Examination',
     VASOPS = 'VASOPS Event',
+    RFE = 'Real Flight Operations Event',
+    PDE = 'Public Demonstration Event',
 }
 
 export interface VatsimEvent {

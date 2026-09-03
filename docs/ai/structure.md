@@ -272,6 +272,7 @@ Background tasks:
 - `app/utils/server/tasks.ts` is the central scheduler for recurring jobs.
 - `app/utils/server/vatsim/update.ts` normalizes and enriches live VATSIM data, including pilot status, routes, transceivers, achievements, sectors, bookings, tracks, and websocket counters.
   - Booking ingestion fetches several UTC daily IVAO windows, dedupes by booking id, and normalizes the source payload before the shared storage/enrichment step.
+  - Event ingestion normalizes the IVAO `v1/events` payload into the existing `VatsimEvent` shape, derives the short description from the first markdown paragraph, and keeps the next 28 days of events in Redis.
   - Ground pilot status is assigned here: no-plan ground aircraft are `depTaxi`, planned aircraft still on their departure are `depTaxi`, and planned aircraft already away from departure or on another ground airport are `arrTaxi`.
   - `parseCoordinates()` in this file normalizes Concorde Nattrak route strings into compact decimal-degree route aliases such as `4025N06700W/SN67W`, preserving both the source coordinate semantics and the published fix name.
 - `app/utils/server/vatsim/atc-duplicating.ts` contains the shared ATC duplicating settings used by client ATC render updates to duplicate controllers based on callsign shape and ATIS area text.

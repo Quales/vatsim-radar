@@ -30,31 +30,17 @@ let firstLog = false;
 export function getVATSIMIdentHeaders(): Record<string, string> {
     const token = process.env.IVAO_IDENT_TOKEN;
     const apiKey = process.env.IVAO_API_KEY;
+    const headers: Record<string, string> = {};
 
-    if (!!apiKey) {
-        return {
-            'ApiKey': apiKey
-        };
+    if (apiKey) {
+        headers['ApiKey'] = apiKey;
     }
 
-    if (!token) {
-        if (!firstLog) {
-            firstLog = true;
-            console.log('IVAO_IDENT_TOKEN is missing');
-        }
-
-        return {};
+    if (token) {
+        headers['User-Agent'] = token;
     }
 
-    if (!firstLog) {
-        firstLog = true;
-        console.log('IVAO_IDENT_TOKEN is present');
-    }
-
-    return {
-        'ApiKey': apiKey ?? '',
-        'User-Agent': token,
-    };
+    return headers;
 }
 
 export function writeJsonFile(path: string, data: unknown) {
