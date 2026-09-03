@@ -212,12 +212,6 @@
                     </template>
                     <div class="__info-sections">
                         <ui-button
-                            href="https://discord.com/invite/vatsim"
-                            target="_blank"
-                        >
-                            General VATSIM Discussion
-                        </ui-button>
-                        <ui-button
                             href="/discord"
                             target="_blank"
                         >

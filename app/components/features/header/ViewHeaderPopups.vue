@@ -1,7 +1,7 @@
 <template>
     <popup-fullscreen v-model="store.loginPopup">
         <template #title>
-            Authorize via VATSIM
+            Authorize via IVAO
         </template>
         In order to edit and save your settings, you must authorize first.
         <template #actions>

@@ -671,7 +671,12 @@ async function handleMoveEnd() {
         });
     }
 
-    const targetOrigin = config.public.DOMAIN;
+    let targetOrigin = '*';
+    try {
+        const origin = new URL(config.public.DOMAIN).origin;
+        if (origin.startsWith('http://') || origin.startsWith('https://')) targetOrigin = origin;
+    }
+    catch {}
     window.parent.postMessage({
         type: 'move',
         query,

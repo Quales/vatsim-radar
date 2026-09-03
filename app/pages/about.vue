@@ -60,6 +60,32 @@
                 The Team
             </div>
 
+            <div class="about__teams_section_label">IVAO radar bridge</div>
+            <div class="about__teams_cards">
+                <div class="about__teams_card">
+                <img
+                    alt="Arthur"
+                    class="about__teams_card_avatar"
+                    src="https://avatars.githubusercontent.com/u/27543795"
+                >
+                <div class="about__teams_card_name">Arthur</div>
+                <div class="about__teams_card_role">IVAO Radar Bridge</div>
+                <a
+                    class="about__teams_card_link"
+                    href="https://github.com/Quales"
+                    rel="noopener"
+                    target="_blank"
+                >
+                    <img
+                        alt="GitHub"
+                        height="14"
+                        src="@/assets/icons/social/github.svg"
+                        width="14"
+                    >
+                </a>
+            </div>
+            </div>
+
             <div class="about__teams_section_label">Core Team</div>
             <div class="about__teams_cards">
                 <div class="about__teams_card">
@@ -203,7 +229,7 @@
                         Support Us
                     </div>
                     <div class="about__support_text">
-                        IVAO Radar is funded by generous members of the community. Help us keep the service running!
+                        IVAO Radar can be funded by generous members of the community. Help us keep the service running!
                     </div>
                     <ui-button
                         class="about__support_button"

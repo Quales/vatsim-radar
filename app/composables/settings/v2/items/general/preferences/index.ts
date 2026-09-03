@@ -24,7 +24,7 @@ export const settingsItemPreferences = globalComputed(() => makeSettingsItems(({
     },
     eventsLocalTimezone: {
         title: 'Events local time',
-        description: 'Shows VATSIM Events in your local timezone instead of Zulu time',
+        description: 'Shows IVAO Events in your local timezone instead of Zulu time',
         searchKeywords: ['utc', 'timezone', 'local', 'zulu'],
         type: 'toggle',
         value: getSettingValue('appearance.eventsLocalTimezone'),

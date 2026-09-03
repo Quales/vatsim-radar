@@ -62,7 +62,7 @@ const shownKeys: PartialRecord<keyof VRInitStatus, {
         method: checkForUpdates,
     },
     dataGet: {
-        title: 'VATSIM Data',
+        title: 'IVAO Data',
         method: checkForData,
     },
     vatspy: {

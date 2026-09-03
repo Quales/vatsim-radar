@@ -98,17 +98,6 @@
                 </ui-button>
                 <ui-button-group>
                     <ui-button
-                        href="https://discord.com/invite/vatsim"
-                        orientation="horizontal"
-                        target="_blank"
-                        type="secondary"
-                    >
-                        <template #icon>
-                            <discord-icon/>
-                        </template>
-                        General VATSIM Discord
-                    </ui-button>
-                    <ui-button
                         href="/discord"
                         orientation="horizontal"
                         target="_blank"

@@ -233,7 +233,7 @@ export function vatspyDataToGeojson(data: VatSpyData): FeatureCollection<MultiPo
     return {
         type: 'FeatureCollection',
         // @ts-expect-error Dynamic name
-        name: 'VATSIM Map',
+        name: 'IVAO Map',
         crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
         features: Object.values(data.features).flat(),
     };

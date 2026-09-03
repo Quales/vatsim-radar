@@ -1,12 +1,12 @@
 <template>
     <div class="settings-user __vertical-group-16">
-        <ui-text type="1b">VATSIM ID: <strong>{{store.user?.cid ?? 'Not logged in'}}</strong></ui-text>
+        <ui-text type="1b">IVAO ID: <strong>{{store.user?.cid ?? 'Not logged in'}}</strong></ui-text>
         <ui-button
             v-if="store.user && !store.user.cid"
             size="S"
             @click="vatsimAuth"
         >
-            Login with VATSIM
+            Login with IVAO
         </ui-button>
         <ui-button-group v-if="store.user">
             <ui-button

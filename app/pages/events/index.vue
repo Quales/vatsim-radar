@@ -1,7 +1,7 @@
 <template>
     <ui-page-container container>
         <template #title>
-            VATSIM Events
+            IVAO Events
         </template>
 
         <template #append>

@@ -309,7 +309,7 @@ const tabs = computed<InfoPopupContent>(() => {
 
     if (vatInfo.value) {
         list.info.sections.push({
-            title: 'VATSIM Airport Info',
+            title: 'IVAO Airport Info',
             collapsible: true,
             key: 'airport',
         });

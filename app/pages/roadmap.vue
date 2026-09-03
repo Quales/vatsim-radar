@@ -117,7 +117,7 @@ const roadmap = reactive<Roadmap[]>([
         items: [
             { title: 'Desktop Application', status: 'completed' },
             'VatSPY FIRS/UIRS API',
-            'VATSIM data caching',
+            'IVAO data caching',
             'Log in via VATSIM/Navigraph',
             'FIRS/UIRS on map',
             'Aircraft on map',
