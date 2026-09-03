@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+    frontend:
+        build:
+            context: .
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt
+        command: /bin/sh -c "/radar/.config/command-prod.sh"
+        restart: unless-stopped
+        environment:
+            - NODE_ENV=production
+            - NUXT_ENV=production
+            - NITRO_ENV=production
+            - NITRO_DEBUG=false
+            - NUXT_PUBLIC_DEBUG=false
+            - NITRO_PUBLIC_DEBUG=false
+            - NUXT_PUBLIC_DEVTOOLS=false
+            - NITRO_EXPERIMENTAL_NO_SCRIPTS=true
+            - NITRO_EXPERIMENTAL_NO_VUE_DEVTOOLS=true
+        ports:
+            - "127.0.0.1:52675:3000"
+            - "100.90.196.2:52675:3000"
+        volumes:
+            - ./.env:/radar/.env:ro
+            - ./.config/certs:/radar/.config/certs
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:3000/privacy-policy" ]
+            interval: 5s
+            timeout: 2s
+            retries: 3
+            start_period: 30s
+        networks:
+            - radar-backend
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    worker:
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt-worker
+        ports:
+            - '127.0.0.1:8880:8880'
+            - '100.90.196.2:8880:8880'
+        command: /radar/.config/worker-prod.sh
+        volumes:
+            - ./.env:/radar/.env:ro
+        environment:
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - REDIS_PASSWORD=RADAR
+        depends_on:
+            frontend:
+                condition: service_healthy
+        networks:
+            - radar-backend
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    navigraph:
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: .config/Dockerfile.prod
+        image: vatsim-radar-prod
+        container_name: vatsim-radar-prebuilt-navigraph
+        ports:
+            - '127.0.0.1:3000:3000'
+            - '100.90.196.2:3000:3000'
+        command: /radar/.config/navigraph-prod.sh
+        volumes:
+            - ./.env:/radar/.env:ro
+            - ./.config/certs:/radar/.config/certs
+        depends_on:
+            frontend:
+                condition: service_healthy
+        networks:
+            - radar-backend
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+networks:
+    radar-backend:
+        external: true
+        name: vatsim-radar-backend

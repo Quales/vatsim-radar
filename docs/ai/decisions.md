@@ -46,6 +46,8 @@ This is the registry of non-obvious behavioral invariants and intentional tradeo
 - F5 NGINX access logging is disabled with `access-log-off: "true"` to remove high-volume successful request logs while retaining NGINX error logs and controller process logs for incident diagnostics.
 - F5 Ingress proxy buffers use the moderate `32k` header buffer, `4 64k` response buffers, and `128k` busy-buffer limit to reduce temporary-file buffering for large API responses without adopting the much larger 128k/4x256k configuration.
 - F5 upstreams use `nginx.org/max-fails: "10"` and `nginx.org/fail-timeout: "30s"`, so short transient backend failures do not immediately remove a pod from rotation; revisit these values if they hide sustained backend failures.
+- VPS Docker deployment is intentionally split into `docker-compose.vps.infra.yml` (stateful `db`/`redis`/`questdb`) and `docker-compose.vps.app.yml` (application services). App services must not bind-mount the full repository into `/radar`, otherwise runtime containers override the built image filesystem and redeploys stop reflecting prebuilt artifacts.
+- VPS app containers bind-mount only `./.env` to `/radar/.env` (plus persistent certs for services generating them) so startup scripts keep using the expected `/radar/.env` path without reintroducing source-code mounts.
 
 ## Flight Lifecycle And Route Parsing
 

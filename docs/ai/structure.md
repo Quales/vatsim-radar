@@ -35,6 +35,8 @@ Important root files:
 - `package.json` defines the main workflows: `yarn dev`, `yarn build`, `yarn lint`, `yarn typecheck`, `yarn docs:*`.
 - `prisma/schema.prisma` defines persisted user/auth/settings/list/message/notam models.
 - `docker-compose*.yml` files describe local/prebuilt deployment environments.
+- `docker-compose.vps.infra.yml` owns long-lived VPS data services (`db`, `redis`, `questdb`) and creates the shared Docker network `vatsim-radar-backend`.
+- `docker-compose.vps.app.yml` owns application services (`frontend`, `worker`, `navigraph`) and joins the external `vatsim-radar-backend` network for service discovery.
 - `.config/k8s/ingress.yml` defines public host/path routing for production and next, including F5 NGINX `server-snippets` for custom upstream error handling.
 - `.config/k8s/f5-values.yml` contains Helm values for the F5 NGINX Ingress Controller, including the global `worker-connections` setting used by the generated NGINX configuration.
 
