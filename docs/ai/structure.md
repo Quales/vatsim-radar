@@ -33,6 +33,7 @@ Important root files:
 
 - `nuxt.config.ts` configures `srcDir: 'app/'`, modules, runtime config, PWA, Nitro route rules, dev port `8080`, and the Safari 15 client build target.
 - `package.json` defines the main workflows: `yarn dev`, `yarn build`, `yarn lint`, `yarn typecheck`, `yarn docs:*`.
+- `Makefile` provides VPS deployment shortcuts for split stacks (`docker-compose.vps.infra.yml` and `docker-compose.vps.app.yml`) including `app-build`, `app-redeploy`, and `deploy`.
 - `prisma/schema.prisma` defines persisted user/auth/settings/list/message/notam models.
 - `docker-compose*.yml` files describe local/prebuilt deployment environments.
 - `docker-compose.vps.infra.yml` owns long-lived VPS data services (`db`, `redis`, `questdb`) and creates the shared Docker network `vatsim-radar-backend`.
