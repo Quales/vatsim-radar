@@ -4,6 +4,12 @@
 
 ## Highlights
 
+- Events and bookings are now the IVAO data
+
+# [2.0.1-0.1]
+
+## Highlights
+
 - Changed data source from VATSIM to IVAO
 
 ## Features and Improvements
