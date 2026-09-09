@@ -9,7 +9,7 @@
         >
             <div class="support_hero_title">
                 Support <span>IVAO Radar</span><br>
-                on <span>Patreon</span> or <span>Boosty</span>
+                on <span>Patreon</span>
             </div>
             <div class="support_hero_text">
                 Our financial goals are to keep <span>IVAO Radar</span> stable, no matter how it grows. Currently, we need money for <span>DigitalOcean</span> servers, as well as <span>CloudFlare</span> services.<br><br>
@@ -43,17 +43,10 @@
             </div>
             <div  class="support_hero_cta">
                 <ui-button
-                    href="https://patreon.com/vatsimradar24"
+                    href="https://patreon.com/IVAORadar"
                     target="_blank"
                 >
                     Become a Supporter on Patreon
-                </ui-button>
-                <ui-button
-                    href="https://boosty.to/vatsimradar24"
-                    target="_blank"
-                    type="secondary"
-                >
-                    Support us on Boosty
                 </ui-button>
             </div>
         </div>
@@ -81,7 +74,7 @@
                             v-if="!feature.patrons.value.length"
                             class="support__list_item_message"
                         >
-                            This level costs {{feature.cost}}$. No wonder no one bought it!
+                            This level costs {{feature.cost}}$.
                         </div>
                         <div
                             v-else
@@ -104,19 +97,10 @@
                         </div>
                         <ul class="support__list_item_list">
                             <li>
-                                Support our development
-                            </li>
-                            <li>
-                                Beta versions access
-                            </li>
-                            <li>
-                                Esri Satellite Layer
+                                Support the development
                             </li>
                             <li>
                                 Name on this page (Patreon only)
-                            </li>
-                            <li>
-                                Telegram Chat (Boosty only)
                             </li>
                             <li>
                                 More in future...
@@ -174,32 +158,32 @@ const getPatronForFeature = (id: string) => computed(() => data.value?.highlight
 
 const features: Feature[] = [
     {
-        id: '23172665',
+        id: '29563098',
         key: 'instructor',
-        title: 'Radar Senior Instructor',
+        title: 'Radar Director',
         cost: 50,
-        patrons: getPatronForFeature('23172665'),
+        patrons: getPatronForFeature('29563098'),
     },
     {
-        id: '23172660',
+        id: '29563088',
         key: 'examiner',
-        title: 'Features Examiner',
+        title: 'Radar Supervisor',
         cost: 20,
-        patrons: getPatronForFeature('23172660'),
+        patrons: getPatronForFeature('29563088'),
     },
     {
-        id: '23172646',
+        id: '29563087',
         key: 'commercial',
-        title: 'Commercial Radar License',
+        title: 'Radar Controller',
         cost: 10,
-        patrons: getPatronForFeature('23172646'),
+        patrons: getPatronForFeature('29563087'),
     },
     {
-        id: '23172635',
+        id: '29563077',
         key: 'private',
-        title: 'Private Radar License',
+        title: 'Radar Observer',
         cost: 5,
-        patrons: getPatronForFeature('23172635'),
+        patrons: getPatronForFeature('29563077'),
     },
 ];
 </script>

@@ -34,7 +34,7 @@ This was a huuge year for Radar! We've delivered:
 
 ## Your Support
 
-Despite me having benefits for our [Patreon](https://www.patreon.com/vatsimradar24) members, our monthly budget still covers almost twice of what we need to pay for cloud.
+Despite me having benefits for our [Patreon](https://www.patreon.com/IVAORadar) members, our monthly budget still covers almost twice of what we need to pay for cloud.
 
 I can't thank you all enough - and I promise, you'll have more to come from me to thank you in coming year!
 

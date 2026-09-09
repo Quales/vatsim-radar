@@ -1673,7 +1673,7 @@ Following weather layers have been added:
 We had more plans for layers actually... but it turned out most layers are paid.
 
 Since we can't afford paying for layers & weather now, you can support us on recently opened
-Patreon: https://www.patreon.com/vatsimradar24
+Patreon: https://www.patreon.com/IVAORadar
 
 ### New Aircraft Icons
 
