@@ -21,6 +21,19 @@ let appName = 'IVAO Radar';
 if (process.env.NODE_ENV === 'development') appName = 'IVAO Radar Dev';
 if (process.env.DOMAIN?.includes('next')) appName = 'IVAO Radar Next';
 
+function cacheControl(
+    browserMaxAge: number,
+    staleWhileRevalidate: number,
+    cdnMaxAge = browserMaxAge,
+) {
+    return [
+        'public',
+        `max-age=${ browserMaxAge }`,
+        `s-maxage=${ cdnMaxAge }`,
+        `stale-while-revalidate=${ staleWhileRevalidate }`,
+    ].join(', ');
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     ignore: appDataIgnorePatterns,
@@ -229,6 +242,146 @@ export default defineNuxtConfig({
             },
             '/vg': {
                 redirect: `${ process.env.DOMAIN }/?vg=1`,
+            },
+            '/static/**': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 365, 60 * 60 * 24 * 365),
+                },
+            },
+            '/favicon.ico': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 365, 60 * 60 * 24 * 365),
+                },
+            },
+            '/favicon-*.png': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 365, 60 * 60 * 24 * 365),
+                },
+            },
+            '/apple-touch-icon.png': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 365, 60 * 60 * 24 * 365),
+                },
+            },
+            '/web-app-manifest-*.png': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 365, 60 * 60 * 24 * 365),
+                },
+            },
+            '/people/**': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 30),
+                },
+            },
+            '/tiles.json': {
+                headers: {
+                    'cache-control': cacheControl(60 * 30, 60 * 60 * 24),
+                },
+            },
+            '/tiles/**': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24 * 7, 60 * 60 * 24 * 30),
+                },
+            },
+            '/api/data/status': {
+                headers: {
+                    'cache-control': cacheControl(10, 60),
+                },
+            },
+            '/api/data/versions': {
+                headers: {
+                    'cache-control': cacheControl(60, 300),
+                },
+            },
+            '/api/data/releases': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60, 60 * 60 * 12),
+                },
+            },
+            '/api/data/patreon': {
+                headers: {
+                    'cache-control': cacheControl(60 * 5, 60 * 30),
+                },
+            },
+            '/api/data/airlines': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24, 60 * 60 * 24 * 7),
+                },
+            },
+            '/api/data/achievements': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60 * 24, 60 * 60 * 24 * 7),
+                },
+            },
+            '/api/data/vatspy': {
+                headers: {
+                    'cache-control': cacheControl(60 * 60, 60 * 60 * 12),
+                },
+            },
+            '/api/data/simaware': {
+                headers: {
+                    'cache-control': cacheControl(60 * 5, 60 * 30),
+                },
+            },
+            '/api/data/vatglasses': {
+                headers: {
+                    'cache-control': cacheControl(60 * 5, 60 * 30),
+                },
+            },
+            '/api/data/sigmets': {
+                headers: {
+                    'cache-control': cacheControl(60, 60 * 5),
+                },
+            },
+            '/api/data/notams': {
+                headers: {
+                    'cache-control': cacheControl(60, 60 * 5),
+                },
+            },
+            '/api/data/folks-connected': {
+                headers: {
+                    'cache-control': cacheControl(60, 60 * 5),
+                },
+            },
+            '/api/data/tracks': {
+                headers: {
+                    'cache-control': cacheControl(60, 60 * 5),
+                },
+            },
+            '/api/data/dashboard/**': {
+                headers: {
+                    'cache-control': cacheControl(60, 60 * 5),
+                },
+            },
+            '/api/data/vatsim/versions': {
+                headers: {
+                    'cache-control': cacheControl(15, 60),
+                },
+            },
+            '/api/data/vatsim/data/**': {
+                headers: {
+                    'cache-control': cacheControl(2, 10),
+                },
+            },
+            '/api/data/vatsim/events/**': {
+                headers: {
+                    'cache-control': cacheControl(30, 180),
+                },
+            },
+            '/api/data/vatsim/bookings': {
+                headers: {
+                    'cache-control': cacheControl(30, 180),
+                },
+            },
+            '/api/data/vatsim/airport/**': {
+                headers: {
+                    'cache-control': cacheControl(30, 180),
+                },
+            },
+            '/api/data/vatsim/pilot/**': {
+                headers: {
+                    'cache-control': cacheControl(15, 90),
+                },
             },
             '/layers/esri/**': {
                 proxy: 'https://ibasemaps-api.arcgis.com/**',

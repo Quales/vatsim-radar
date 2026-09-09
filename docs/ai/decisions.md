@@ -49,6 +49,11 @@ This is the registry of non-obvious behavioral invariants and intentional tradeo
 - VPS Docker deployment is intentionally split into `docker-compose.vps.infra.yml` (stateful `db`/`redis`/`questdb`) and `docker-compose.vps.app.yml` (application services). App services must not bind-mount the full repository into `/radar`, otherwise runtime containers override the built image filesystem and redeploys stop reflecting prebuilt artifacts.
 - VPS app containers bind-mount only `./.env` to `/radar/.env` (plus persistent certs for services generating them) so startup scripts keep using the expected `/radar/.env` path without reintroducing source-code mounts.
 
+## CDN And Edge Cache
+
+- Keep the Cloudflare/VPS cache split asymmetric: hashed client bundles, icons, and other immutable public assets can be cached for a year, but user-specific HTML must stay uncacheable so theme/auth state does not leak between visitors.
+- Public JSON endpoints may use short `stale-while-revalidate` windows to collapse request bursts, but live VATSIM feeds should stay on very short windows so the map does not drift too far behind real data during active traffic.
+
 ## Flight Lifecycle And Route Parsing
 
 - Aircraft turns cache is tied to the current online connection: when `flightPlanTime` changes, invalidate the cached response so the next client update performs a full turns request instead of reusing data from the previous connection.

@@ -73,6 +73,7 @@ The app has three main runtime layers:
 PWA and browser-cache behavior:
 
 - `nuxt.config.ts` configures `@vite-pwa/nuxt` with prompted service-worker updates, periodic update checks, Workbox precaching for JS/CSS/fonts/SVG/webmanifest assets, and a `static-assets` runtime cache for other static files.
+- `nuxt.config.ts` also sets explicit edge-cache headers for hashed build assets and low-risk public JSON endpoints so Cloudflare can absorb burst traffic without caching user-specific HTML.
 - PWA manifest `handle_links: 'not-preferred'` only controls whether an installed PWA prefers handling links to its own origin; it does not make external anchors open in new tabs. External links must use `target="_blank"` (or `window.open`) at their individual call sites.
 - `app/components/features/layout/LayoutUpdatePopup.vue` applies a pending service-worker update or reloads the page when the app reports a new version.
 - `app/plugins/db.client.ts` initializes the browser-side Dexie database through `app/composables/render/idb.ts`; several dataset-update handlers in `app/composables/init.ts` delete the database and call `location.reload()` after IndexedDB failures. A persistent browser-cache/service-worker or IndexedDB failure can therefore appear as a page refresh loop.
