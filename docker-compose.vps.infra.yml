@@ -33,6 +33,8 @@ services:
         command: redis-server /usr/local/etc/redis/redis.conf --requirepass RADAR --bind 0.0.0.0
         expose:
             - 6379
+        ports:
+            - '100.90.196.2:6379:6379'
         environment:
             - REDIS_APPLICATION_MODE=master
         volumes:
