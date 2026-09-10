@@ -189,7 +189,7 @@ async function initLayer() {
                 tileSize: 256,
                 minZoom: 2,
                 crossOrigin: 'anonymous',
-                maxZoom: 7,
+                maxZoom: 9,
             }),
             zIndex: 0,
             cacheSize: 32,

@@ -11,7 +11,7 @@
     0
   ],
   "description": "Basemap layers derived from OpenStreetMap and Natural Earth",
-  "maxzoom": 7,
+  "maxzoom": 10,
   "minzoom": 0,
   "name": "Protomaps Basemap",
   "scheme": "xyz",
@@ -29,7 +29,7 @@
         "sort_rank": "Number"
       },
       "id": "boundaries",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 0
     },
     {
@@ -43,7 +43,7 @@
         "sort_rank": "Number"
       },
       "id": "buildings",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 11
     },
     {
@@ -103,7 +103,7 @@
         "script3": "String"
       },
       "id": "earth",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 0
     },
     {
@@ -111,7 +111,7 @@
         "kind": "String"
       },
       "id": "landcover",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 0
     },
     {
@@ -120,7 +120,7 @@
         "sort_rank": "Number"
       },
       "id": "landuse",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 2
     },
     {
@@ -207,7 +207,7 @@
         "wikidata": "String"
       },
       "id": "places",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 0
     },
     {
@@ -274,7 +274,7 @@
         "script3": "String"
       },
       "id": "pois",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 5
     },
     {
@@ -347,7 +347,7 @@
         "sort_rank": "Number"
       },
       "id": "roads",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 3
     },
     {
@@ -414,7 +414,7 @@
         "tunnel": "String"
       },
       "id": "water",
-      "maxzoom": 7,
+      "maxzoom": 10,
       "minzoom": 0
     }
   ],

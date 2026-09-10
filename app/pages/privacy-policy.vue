@@ -85,7 +85,7 @@
                                 information that may be used to analyze user's identity
                             </li>
                             <li>
-                                User's personal data may also be stored in private containers in <span>CloudFlare</span> and <span>DigitalOcean</span> for backups purposes
+                                User's personal data may also be stored in private containers in <span>CloudFlare</span> and <span>OVH</span> for backups purposes
                             </li>
                         </ol>
                     </div>

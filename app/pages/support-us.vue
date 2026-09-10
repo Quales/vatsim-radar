@@ -12,7 +12,7 @@
                 on <span>Patreon</span>
             </div>
             <div class="support_hero_text">
-                Our financial goals are to keep <span>IVAO Radar</span> stable, no matter how it grows. Currently, we need money for <span>DigitalOcean</span> servers, as well as <span>CloudFlare</span> services.<br><br>
+                Our financial goals are to keep <span>IVAO Radar</span> stable, no matter how it grows. Currently, we need money for <span>OVH</span> servers, as well as <span>CloudFlare</span> services.<br><br>
                 In future, we may buy some existing features and pay for more services that we may need to improve <span>IVAO Radar</span>.
             </div>
             <div class="support_hero_stats">
